@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DateOfBirth.cpp" />
     <ClCompile Include="DateOfBith.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Person.cpp" />

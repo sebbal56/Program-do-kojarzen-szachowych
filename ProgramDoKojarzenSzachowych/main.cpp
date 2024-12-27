@@ -1,6 +1,9 @@
 #include <iostream>
+#include "Person.h"
 
 int main()
 {
-    std::cout << "Hello World" << std::endl;
+    Person osoba1;
+    osoba1.setPerson();
+    osoba1.writePerson();
 }

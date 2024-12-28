@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "DateOfBith.h"
+#include "DateOfBirth.h"
 
 class Person
 {
@@ -9,7 +9,12 @@ class Person
 	DateOfBirth dateOfBirth;
 
 public:
+	Person* next = nullptr;
+	Person* previous = nullptr;
 	void setPerson();
 	void writePerson();
+	int compare(const Person& pattern) const;
+	Person() = default;
+	Person(const Person& pattern);
 };
 

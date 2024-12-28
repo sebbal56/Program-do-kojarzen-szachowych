@@ -9,5 +9,6 @@ class DateOfBirth
 public:
 	void setDate();
 	void writeDate();
+	int compare(const DateOfBirth& pattern) const;
 };
 

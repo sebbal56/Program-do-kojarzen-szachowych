@@ -128,12 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DateOfBirth.cpp" />
-    <ClCompile Include="DateOfBith.cpp" />
+    <ClCompile Include="ListOfPeople.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Person.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DateOfBith.h" />
+    <ClInclude Include="DateOfBirth.h" />
+    <ClInclude Include="ListOfPeople.h" />
     <ClInclude Include="Person.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -16,5 +16,6 @@ public:
 	int compare(const Person& pattern) const;
 	Person() = default;
 	Person(const Person& pattern);
+	Person(std::string surname, std::string name, int d, int m, int y);
 };
 

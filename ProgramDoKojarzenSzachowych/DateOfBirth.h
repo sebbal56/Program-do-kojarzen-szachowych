@@ -10,5 +10,7 @@ public:
 	void setDate();
 	void writeDate();
 	int compare(const DateOfBirth& pattern) const;
+	DateOfBirth(int d, int m, int y);
+	DateOfBirth() = default;
 };
 

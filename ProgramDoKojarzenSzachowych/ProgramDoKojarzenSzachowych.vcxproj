@@ -130,12 +130,16 @@
     <ClCompile Include="DateOfBirth.cpp" />
     <ClCompile Include="ListOfPeople.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PeopleBaseManager.cpp" />
     <ClCompile Include="Person.cpp" />
+    <ClCompile Include="sqlite3.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DateOfBirth.h" />
     <ClInclude Include="ListOfPeople.h" />
+    <ClInclude Include="PeopleBaseManager.h" />
     <ClInclude Include="Person.h" />
+    <ClInclude Include="sqlite3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

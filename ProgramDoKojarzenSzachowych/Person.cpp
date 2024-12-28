@@ -37,3 +37,9 @@ Person::Person(const Person& pattern){
     surname = pattern.surname;
     dateOfBirth = pattern.dateOfBirth;
 }
+
+Person::Person(std::string sN, std::string n, int d, int m, int y) {
+    surname = sN;
+    name = n;
+    dateOfBirth = DateOfBirth(d, m, y);
+}

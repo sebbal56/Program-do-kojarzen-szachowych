@@ -29,3 +29,9 @@ int DateOfBirth::compare(const DateOfBirth& pattern) const
 	if (this->day < pattern.day) return 1;
 	return 0;
 }
+
+DateOfBirth::DateOfBirth(int d, int m, int y) {
+	day = d;
+	month = m;
+	year = y;
+}

@@ -138,7 +138,9 @@
     <ClCompile Include="MainFrame.cpp" />
     <ClCompile Include="PeopleBaseManager.cpp" />
     <ClCompile Include="Person.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="sqlite3.c" />
+    <ClCompile Include="Tournament.cpp" />
     <ClCompile Include="TournamentCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -148,7 +150,9 @@
     <ClInclude Include="MainFrame.h" />
     <ClInclude Include="PeopleBaseManager.h" />
     <ClInclude Include="Person.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="sqlite3.h" />
+    <ClInclude Include="Tournament.h" />
     <ClInclude Include="TournamentCreator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

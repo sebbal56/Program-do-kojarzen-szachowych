@@ -1,24 +1,35 @@
 #include "MainFrame.h"
 
+wxBEGIN_EVENT_TABLE(MainFrame, wxFrame)
+EVT_BUTTON(1001, MainFrame::OnCreateTournament)
+wxEND_EVENT_TABLE()
+
 MainFrame::MainFrame(const wxString& title)
-    : wxFrame(nullptr, wxID_ANY, title, wxDefaultPosition, wxSize(400, 300)) {
+    : wxFrame(nullptr, wxID_ANY, title, wxDefaultPosition, wxSize(800, 600)) {
 
     wxPanel* panel = new wxPanel(this);
 
-    // Pole tekstowe
-    inputField = new wxTextCtrl(panel, wxID_ANY, "", wxPoint(20, 20), wxSize(200, 25));
-
     // Przycisk
-    wxButton* button = new wxButton(panel, wxID_ANY, "Przetwórz dane", wxPoint(240, 20));
-    Bind(wxEVT_BUTTON, &MainFrame::OnRunLogic, this, button->GetId());
+    wxButton* loadButton = new wxButton(panel, wxID_ANY, "Wczytaj turniej", wxPoint(250, 100), wxSize(300, 150));
 
-    // Wynik
-    outputLabel = new wxStaticText(panel, wxID_ANY, "Wynik pojawi siê tutaj", wxPoint(20, 60), wxSize(300, 25));
+
+    //przycisk
+    wxButton* newButton = new wxButton(panel, wxID_ANY, "Utwórz turniej", wxPoint(250, 300), wxSize(300, 150));
+    Bind(wxEVT_BUTTON, &MainFrame::OnCreateTournament, this, newButton->GetId());
+
+
+    wxFont font(16, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
+    loadButton->SetFont(font);
+    newButton->SetFont(font);
+
 }
 
 void MainFrame::OnRunLogic(wxCommandEvent& event) {
-    wxString input = inputField->GetValue();
     AppLogic& appLogic = AppLogic::getInstance();
-    std::string result = logic.processData(std::string(input.mb_str()));
-    outputLabel->SetLabel(result);
+}
+
+void MainFrame::OnCreateTournament(wxCommandEvent& event) {
+    this->DestroyChildren(); // Usuñ obecne komponenty
+    TournamentCreator* creatorPanel = new TournamentCreator(this);
+    this->Layout(); // Odœwie¿ uk³ad
 }

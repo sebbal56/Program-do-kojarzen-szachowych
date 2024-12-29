@@ -9,7 +9,7 @@ public:
         AppLogic& appLogic = AppLogic::getInstance();  // Uzyskanie instancji AppLogic
         appLogic.loadDataFromDatabase("PeopleBase.db");
 
-        MainFrame* frame = new MainFrame("Moja aplikacja GUI z wxWidgets");
+        MainFrame* frame = new MainFrame("Program do kojarzeñ szachowych");
         frame->Show(true);
         return true;
     }

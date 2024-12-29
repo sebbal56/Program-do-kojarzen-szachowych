@@ -3,6 +3,7 @@
 
 #include <wx/wx.h>
 #include "AppLogic.h"
+#include "TournamentCreator.h"
 
 class MainFrame : public wxFrame {
 public:
@@ -10,9 +11,11 @@ public:
 
 private:
     void OnRunLogic(wxCommandEvent& event); // Obs³uga przycisku
-    wxTextCtrl* inputField; // Pole tekstowe
-    wxStaticText* outputLabel; // Etykieta do wyœwietlania wyników
     AppLogic& logic = AppLogic::getInstance();
+
+    void OnCreateTournament(wxCommandEvent& event);
+
+    wxDECLARE_EVENT_TABLE();
 };
 
 #endif

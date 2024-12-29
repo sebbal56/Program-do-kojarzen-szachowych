@@ -42,6 +42,10 @@ void ListOfPeople::writeAllPeople() const
 	}
 }
 
+std::string ListOfPeople::getSurnameOfHead() {
+	return head->getSurname();
+}
+
 ListOfPeople::ListOfPeople() : head(nullptr){
 
 }

@@ -32,6 +32,10 @@ int Person::compare(const Person& pattern) const
     return 0;
 }
 
+std::string Person::getSurname() {
+    return surname;
+}
+
 Person::Person(const Person& pattern){
     name = pattern.name;
     surname = pattern.surname;

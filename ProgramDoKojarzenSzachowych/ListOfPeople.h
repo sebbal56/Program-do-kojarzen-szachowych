@@ -9,6 +9,7 @@ class ListOfPeople
 public:
 	void addPerson(const Person& person);
 	void writeAllPeople() const;
+	std::string getSurnameOfHead();  //tymczasowe
 	ListOfPeople();
 
 };

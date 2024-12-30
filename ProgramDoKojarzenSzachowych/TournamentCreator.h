@@ -4,6 +4,7 @@
 #include <wx/wx.h>
 #include "AppLogic.h"
 #include "MainFrame.h"
+#include "TournamentWindow.h"
 
 class TournamentCreator : public wxPanel {
 public:
@@ -11,6 +12,7 @@ public:
 
 private:
     void OnCancel(wxCommandEvent& event);  
+    void OnNext(wxCommandEvent& event);  
 
     wxTextCtrl* nameField;
     wxTextCtrl* dayField;

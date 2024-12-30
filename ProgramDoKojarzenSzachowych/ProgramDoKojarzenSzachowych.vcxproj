@@ -142,6 +142,7 @@
     <ClCompile Include="sqlite3.c" />
     <ClCompile Include="Tournament.cpp" />
     <ClCompile Include="TournamentCreator.cpp" />
+    <ClCompile Include="TournamentWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AppLogic.h" />
@@ -154,6 +155,7 @@
     <ClInclude Include="sqlite3.h" />
     <ClInclude Include="Tournament.h" />
     <ClInclude Include="TournamentCreator.h" />
+    <ClInclude Include="TournamentWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

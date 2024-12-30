@@ -2,14 +2,14 @@
 
 wxBEGIN_EVENT_TABLE(TournamentCreator, wxPanel)
 //EVT_BUTTON(wxID_SAVE, TournamentCreator::OnSaveTournament)
-//EVT_BUTTON(wxID_CANCEL, TournamentCreator::OnBack)
+EVT_BUTTON(wxID_SAVE, TournamentCreator::OnNext)
 EVT_BUTTON(wxID_CANCEL, TournamentCreator::OnCancel)
 wxEND_EVENT_TABLE()
 
 TournamentCreator::TournamentCreator(wxWindow* parent) : wxPanel(parent) {
 
     wxStaticText* tournamentName = new wxStaticText(this, wxID_ANY, "Nazwa turnieju:", wxPoint(20, 20));
-    nameField = new wxTextCtrl(this, wxID_ANY, "", wxPoint(150, 15), wxSize(200, 25));
+    nameField = new wxTextCtrl(this, wxID_ANY, "", wxPoint(150, 15), wxSize(550, 25));
 
     wxStaticText* tournamentDate = new wxStaticText(this, wxID_ANY, "Data turnieju:", wxPoint(20, 60));
     wxStaticText* tournamentDate1 = new wxStaticText(this, wxID_ANY, "Dzieñ:", wxPoint(20, 100));
@@ -53,6 +53,31 @@ void TournamentCreator::OnCancel(wxCommandEvent& event) {
     this->GetParent()->Show(false);  // Ukrywa kreator turnieju
 
     // Tworzymy now¹ instancjê g³ównego okna i je pokazujemy
-    MainFrame* mainFrame = new MainFrame("G³ówne Okno");
+    MainFrame* mainFrame = new MainFrame("Program do kojarzeñ szachowych");
     mainFrame->Show(true);
+}
+
+void TournamentCreator::OnNext(wxCommandEvent& event) {
+    wxString tournamentName = nameField->GetValue();
+    wxString tournamentDay = dayField->GetValue();
+    wxString tournamentMonth = monthField->GetValue();
+    wxString tournamentYear = yearField->GetValue();
+    wxString tournamentPlace = placeField->GetValue();
+    wxString tournamentArbiter = arbiterField->GetValue();
+    wxString tournamentAbout = aboutField->GetValue();
+
+    // Ukrywamy obecny panel
+    this->Hide();
+
+    wxWindow* parent = this->GetParent();
+    TournamentWindow* tournamentWindow = new TournamentWindow(parent, tournamentName, tournamentDay, tournamentMonth, tournamentYear, tournamentPlace, tournamentArbiter, tournamentAbout);
+
+    // Ustawiamy sizer i uk³ad
+    wxBoxSizer* sizer = dynamic_cast<wxBoxSizer*>(parent->GetSizer());
+    if (sizer) {
+        sizer->Clear(true); // Usuwamy obecny panel
+        sizer->Add(tournamentWindow, 1, wxEXPAND);
+        parent->Layout();
+        parent->Refresh();
+    }
 }

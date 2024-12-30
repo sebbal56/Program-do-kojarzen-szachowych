@@ -31,5 +31,11 @@ void MainFrame::OnRunLogic(wxCommandEvent& event) {
 void MainFrame::OnCreateTournament(wxCommandEvent& event) {
     this->DestroyChildren(); // Usuñ obecne komponenty
     TournamentCreator* creatorPanel = new TournamentCreator(this);
+    // Stwórz sizer i dodaj panel
+    wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
+    sizer->Add(creatorPanel, 1, wxEXPAND);
+
+    // Ustaw sizer dla MainFrame
+    this->SetSizer(sizer);
     this->Layout(); // Odœwie¿ uk³ad
 }

@@ -1,12 +1,12 @@
 #pragma once
 #include <iostream>
-#include "DateOfBirth.h"
+#include "Date.h"
 
 class Person
 {
 	std::string name;
 	std::string surname;
-	DateOfBirth dateOfBirth;
+	Date dateOfBirth;
 
 public:
 	Person* next = nullptr;

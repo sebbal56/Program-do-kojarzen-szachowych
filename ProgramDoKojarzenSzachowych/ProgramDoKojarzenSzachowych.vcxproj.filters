@@ -21,7 +21,7 @@
     <ClCompile Include="Person.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="DateOfBirth.cpp">
+    <ClCompile Include="Date.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="ListOfPeople.cpp">
@@ -56,7 +56,7 @@
     <ClInclude Include="Person.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="DateOfBirth.h">
+    <ClInclude Include="Date.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="ListOfPeople.h">

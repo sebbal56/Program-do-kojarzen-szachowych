@@ -1,8 +1,8 @@
-#include "DateOfBirth.h"
+#include "Date.h"
 
 
 
-void DateOfBirth::setDate()
+void Date::setDate()
 {
     std::cout << "Podaj dzien: ";
     std::cin >> day;
@@ -13,12 +13,12 @@ void DateOfBirth::setDate()
 }
 
 
-void DateOfBirth::writeDate()
+void Date::writeDate()
 {
     std::cout << day << "-" << month << "-" << year << std::endl;
 }
 
-int DateOfBirth::compare(const DateOfBirth& pattern) const
+int Date::compare(const Date& pattern) const
 {
 	// jezeli this jest starsze niz pattern return - 1
 	if (this->year > pattern.year) return -1;
@@ -30,7 +30,7 @@ int DateOfBirth::compare(const DateOfBirth& pattern) const
 	return 0;
 }
 
-DateOfBirth::DateOfBirth(int d, int m, int y) {
+Date::Date(int d, int m, int y) {
 	day = d;
 	month = m;
 	year = y;

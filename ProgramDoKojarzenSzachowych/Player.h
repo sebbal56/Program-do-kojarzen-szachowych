@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <utility>
-#include "DateOfBirth.h"
+#include "Date.h"
 
 // byæ mo¿e jakieœ dziedziczenie po person? idk jeszcze 
 
@@ -11,7 +11,7 @@ class Player
 {
 	std::string surname;
 	std::string name;
-	DateOfBirth dateOfBirth;
+	Date dateOfBirth;
 	int startingPosition;
 	int rating;
 	int points;

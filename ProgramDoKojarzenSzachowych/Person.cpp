@@ -45,5 +45,5 @@ Person::Person(const Person& pattern){
 Person::Person(std::string sN, std::string n, int d, int m, int y) {
     surname = sN;
     name = n;
-    dateOfBirth = DateOfBirth(d, m, y);
+    dateOfBirth = Date(d, m, y);
 }

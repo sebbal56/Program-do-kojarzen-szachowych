@@ -133,13 +133,16 @@
   <ItemGroup>
     <ClCompile Include="AppLogic.cpp" />
     <ClCompile Include="Date.cpp" />
+    <ClCompile Include="InfoPanel.cpp" />
     <ClCompile Include="ListOfPeople.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainFrame.cpp" />
     <ClCompile Include="PeopleBaseManager.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="ResultPanel.cpp" />
     <ClCompile Include="sqlite3.c" />
+    <ClCompile Include="StartingListPanel.cpp" />
     <ClCompile Include="Tournament.cpp" />
     <ClCompile Include="TournamentCreator.cpp" />
     <ClCompile Include="TournamentWindow.cpp" />
@@ -147,12 +150,15 @@
   <ItemGroup>
     <ClInclude Include="AppLogic.h" />
     <ClInclude Include="Date.h" />
+    <ClInclude Include="InfoPanel.h" />
     <ClInclude Include="ListOfPeople.h" />
     <ClInclude Include="MainFrame.h" />
     <ClInclude Include="PeopleBaseManager.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="ResultPanel.h" />
     <ClInclude Include="sqlite3.h" />
+    <ClInclude Include="StartingListPanel.h" />
     <ClInclude Include="Tournament.h" />
     <ClInclude Include="TournamentCreator.h" />
     <ClInclude Include="TournamentWindow.h" />

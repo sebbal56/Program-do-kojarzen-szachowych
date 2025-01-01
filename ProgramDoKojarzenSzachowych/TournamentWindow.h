@@ -8,6 +8,8 @@
 #include <wx/log.h>
 #include "MainFrame.h"
 #include "Tournament.h"
+#include "StartingListPanel.h"
+#include "InfoPanel.h"
 
 
 class TournamentWindow : public wxPanel {
@@ -15,6 +17,9 @@ public:
     TournamentWindow(wxWindow* parent, Tournament t);
 private:
     void OnSaveTournament(wxCommandEvent& event);
+    void OnShowStartingList(wxCommandEvent& event);
+    void OnShowInfoPanel(wxCommandEvent& event);
+    wxPanel* contentPanel;
     Tournament tournament;
     wxStaticText* mainLabel;
     wxStaticText* tournamentLabel;
@@ -28,6 +33,7 @@ private:
     wxStaticText* aboutLabel2;
     wxButton* startingListButton;
     wxButton* resultsButton;
+    wxButton* mainButton;
 };
 
 #endif // TOURNAMENTWINDOW_H

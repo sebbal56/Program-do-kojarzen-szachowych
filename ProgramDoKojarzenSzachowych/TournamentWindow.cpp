@@ -3,63 +3,43 @@
 
 TournamentWindow::TournamentWindow(wxWindow* parent, Tournament t) : wxPanel(parent) {
     tournament = t;
-    mainLabel = new wxStaticText(this, wxID_ANY, "TURNIEJ", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
-    tournamentLabel = new wxStaticText(this, wxID_ANY, tournament.getName(), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
 
-    placeLabel = new wxStaticText(this, wxID_ANY, "Miejscowoœæ:", wxPoint(300, 120));
-    placeLabel2 = new wxStaticText(this, wxID_ANY, tournament.getPlace(), wxPoint(450, 120));
+    // Panel z przyciskami (po lewej stronie)
+    wxPanel* buttonPanel = new wxPanel(this);
+    wxBoxSizer* buttonSizer = new wxBoxSizer(wxVERTICAL);
 
-    dateLabel = new wxStaticText(this, wxID_ANY, "Data:", wxPoint(300, 170));
-    dateLabel2 = new wxStaticText(this, wxID_ANY, tournament.getDate().writeDate(), wxPoint(450, 170));
+    mainButton = new wxButton(buttonPanel, wxID_ANY, "Strona g³ówna", wxDefaultPosition, wxSize(160, 40));
+    startingListButton = new wxButton(buttonPanel, wxID_ANY, "Lista startowa", wxDefaultPosition, wxSize(160, 40));
+    resultsButton = new wxButton(buttonPanel, wxID_ANY, "Wyniki", wxDefaultPosition, wxSize(160, 40));
+    
+    buttonSizer->Add(mainButton, 0, wxALL, 10);
+    buttonSizer->Add(startingListButton, 0, wxALL, 10);
+    buttonSizer->Add(resultsButton, 0, wxALL, 10);
+    buttonPanel->SetSizer(buttonSizer);
 
-    arbiterLabel = new wxStaticText(this, wxID_ANY, "Sêdzia:", wxPoint(300, 220));
-    arbiterLabel2 = new wxStaticText(this, wxID_ANY, tournament.getArbiter(), wxPoint(450, 220));
+    // Panel z treœci¹ (prawa czêœæ, która siê zmienia)
+    contentPanel = new wxPanel(this);
+    wxBoxSizer* contentSizer = new wxBoxSizer(wxVERTICAL);
 
-    aboutLabel = new wxStaticText(this, wxID_ANY, "Opis turnieju:", wxPoint(300, 270));
-    aboutLabel2 = new wxStaticText(this, wxID_ANY, tournament.getAbout(), wxPoint(300, 300), wxSize(400, 300), wxST_NO_AUTORESIZE);
+    // Tworzymy InfoPanel, który wyœwietli szczegó³y turnieju
+    InfoPanel* infoPanel = new InfoPanel(contentPanel, tournament);
+    contentSizer->Add(infoPanel, 1, wxEXPAND | wxALL, 10); // Dodajemy InfoPanel do contentPanel
 
-    startingListButton = new wxButton(this, wxID_CANCEL, "Lista startowa", wxPoint(20, 100), wxSize(160, 40));
-    resultsButton = new wxButton(this, wxID_SAVE, "Wyniki", wxPoint(20, 160), wxSize(160, 40));
+    contentPanel->SetSizer(contentSizer);
 
-    wxFont font(14, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
-    wxFont font2(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
+    // G³ówny sizer: podzielony na dwie kolumny
+    wxBoxSizer* mainSizer = new wxBoxSizer(wxHORIZONTAL);
+    mainSizer->Add(buttonPanel, 0, wxEXPAND | wxALL, 10);  // Przyciski po lewej stronie
+    mainSizer->Add(contentPanel, 1, wxEXPAND | wxALL, 10); // Dynamiczna zawartoœæ po prawej stronie
 
-    mainLabel->SetFont(font);
-    tournamentLabel->SetFont(font);
-    placeLabel->SetFont(font);
-    placeLabel2->SetFont(font);
-    dateLabel->SetFont(font);
-    dateLabel2->SetFont(font);
-    arbiterLabel->SetFont(font);
-    arbiterLabel2->SetFont(font);
-    aboutLabel->SetFont(font);
-    aboutLabel2->SetFont(font2);
-
-    // Utworzenie g³ównego sizer-a w pionie
-    wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
-    sizer->Add(mainLabel, 0, wxALIGN_CENTER_HORIZONTAL | wxTOP, 20); // Wyœrodkowanie tylko poziomo z marginesem od góry
-    sizer->Add(tournamentLabel, 0, wxALIGN_CENTER_HORIZONTAL | wxTOP, 30); // Wyœrodkowanie tylko poziomo z marginesem od góry
-
-    this->SetSizer(sizer);
+    this->SetSizer(mainSizer);
     this->Layout();
 
 
-
-    // Dodanie menu
-    wxMenuBar* menuBar = new wxMenuBar();
-    wxMenu* fileMenu = new wxMenu();
-
-    fileMenu->Append(wxID_SAVE, "&Zapisz Dane Turnieju\tCtrl+S", "Zapisz dane turnieju do pliku");
-
-    menuBar->Append(fileMenu, "&Plik");
-
-
-    wxFrame* parentFrame = dynamic_cast<wxFrame*>(parent);
-    if (parentFrame) {
-        parentFrame->SetMenuBar(menuBar);
-        parentFrame->Bind(wxEVT_MENU, &TournamentWindow::OnSaveTournament, this, wxID_SAVE);
-    }
-
+    // Zdarzenia
+    Bind(wxEVT_BUTTON, &TournamentWindow::OnShowStartingList, this, startingListButton->GetId());
+    Bind(wxEVT_BUTTON, &TournamentWindow::OnShowInfoPanel, this, mainButton->GetId());
+    //Bind(wxEVT_BUTTON, &TournamentWindow::OnShowResults, this, resultsButton->GetId());
 }
 
 // Obs³uga zapisu danych turnieju
@@ -88,4 +68,26 @@ void TournamentWindow::OnSaveTournament(wxCommandEvent& event) {
     text << "END_OF_TOURNAMENT_DATA" << "\n";
 
     wxLogMessage("Dane turnieju zapisane pomyœlnie.");
+}
+
+void TournamentWindow::OnShowStartingList(wxCommandEvent& event) {
+    // Zast¹pienie zawartoœci panelu dynamicznego list¹ startow¹
+    contentPanel->DestroyChildren();
+
+    StartingListPanel* startingListPanel = new StartingListPanel(contentPanel);
+    wxBoxSizer* contentSizer = new wxBoxSizer(wxVERTICAL);
+    contentSizer->Add(startingListPanel, 1, wxEXPAND);
+    contentPanel->SetSizer(contentSizer);
+    contentPanel->Layout();
+}
+
+void TournamentWindow::OnShowInfoPanel(wxCommandEvent& event) {
+    // Zast¹pienie zawartoœci panelu dynamicznego list¹ startow¹
+    contentPanel->DestroyChildren();
+
+    InfoPanel* startingListPanel = new InfoPanel(contentPanel, tournament);
+    wxBoxSizer* contentSizer = new wxBoxSizer(wxVERTICAL);
+    contentSizer->Add(startingListPanel, 1, wxEXPAND);
+    contentPanel->SetSizer(contentSizer);
+    contentPanel->Layout();
 }

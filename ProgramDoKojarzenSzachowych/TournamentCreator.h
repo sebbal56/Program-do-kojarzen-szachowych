@@ -5,6 +5,7 @@
 #include "AppLogic.h"
 #include "MainFrame.h"
 #include "TournamentWindow.h"
+#include "Tournament.h"
 
 class TournamentCreator : public wxPanel {
 public:

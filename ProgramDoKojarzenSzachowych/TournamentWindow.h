@@ -3,12 +3,12 @@
 
 #include <wx/wx.h>
 #include "MainFrame.h"
+#include "Tournament.h"
 
 
 class TournamentWindow : public wxPanel {
 public:
-    TournamentWindow(wxWindow* parent, const wxString& tournamentName, const wxString& tournamentDay, const wxString& tournamentMonth, 
-        const wxString& tournamentYear, const wxString& tournamentPlace, const wxString& tournamentArbiter, const wxString& tournamentAbout);
+    TournamentWindow(wxWindow* parent, Tournament tournament);
 private:
     wxStaticText* mainLabel;
     wxStaticText* tournamentLabel;

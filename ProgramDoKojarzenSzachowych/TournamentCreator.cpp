@@ -58,10 +58,29 @@ void TournamentCreator::OnCancel(wxCommandEvent& event) {
 }
 
 void TournamentCreator::OnNext(wxCommandEvent& event) {
+    long day, month, year;
+
+    // Konwersja pól na liczby
+    if (!dayField->GetValue().ToLong(&day)) {
+        wxLogError("B³¹d: Nieprawid³owy format dnia.");
+        return;
+    }
+    if (!monthField->GetValue().ToLong(&month)) {
+        wxLogError("B³¹d: Nieprawid³owy format miesi¹ca.");
+        return;
+    }
+    if (!yearField->GetValue().ToLong(&year)) {
+        wxLogError("B³¹d: Nieprawid³owy format roku.");
+        return;
+    }
+
+    int tournamentDay = static_cast<int>(day);
+    int tournamentMonth = static_cast<int>(month);
+    int tournamentYear = static_cast<int>(year);
     wxString tournamentName = nameField->GetValue();
-    wxString tournamentDay = dayField->GetValue();
-    wxString tournamentMonth = monthField->GetValue();
-    wxString tournamentYear = yearField->GetValue();
+    //wxString tournamentDay = dayField->GetValue();
+    //wxString tournamentMonth = monthField->GetValue();
+    //wxString tournamentYear = yearField->GetValue();
     wxString tournamentPlace = placeField->GetValue();
     wxString tournamentArbiter = arbiterField->GetValue();
     wxString tournamentAbout = aboutField->GetValue();
@@ -70,7 +89,9 @@ void TournamentCreator::OnNext(wxCommandEvent& event) {
     this->Hide();
 
     wxWindow* parent = this->GetParent();
-    TournamentWindow* tournamentWindow = new TournamentWindow(parent, tournamentName, tournamentDay, tournamentMonth, tournamentYear, tournamentPlace, tournamentArbiter, tournamentAbout);
+    
+    TournamentWindow* tournamentWindow = new TournamentWindow(parent, Tournament(tournamentName.ToStdString(), Date(tournamentDay, tournamentMonth, tournamentYear), 
+        tournamentPlace.ToStdString(), tournamentArbiter.ToStdString(), tournamentAbout.ToStdString()));
 
     // Ustawiamy sizer i uk³ad
     wxBoxSizer* sizer = dynamic_cast<wxBoxSizer*>(parent->GetSizer());

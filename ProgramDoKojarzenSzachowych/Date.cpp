@@ -13,9 +13,9 @@ void Date::setDate()
 }
 
 
-void Date::writeDate()
+std::string Date::writeDate()
 {
-    std::cout << day << "-" << month << "-" << year << std::endl;
+    return  std::to_string(day) + '-' + std::to_string(month) + '-' + std::to_string(year);
 }
 
 int Date::compare(const Date& pattern) const

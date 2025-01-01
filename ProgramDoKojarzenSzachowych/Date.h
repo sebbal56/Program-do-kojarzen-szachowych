@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 
 class Date{
 	int day;
@@ -7,7 +8,7 @@ class Date{
 	int year;
 public:
 	void setDate();
-	void writeDate();
+	std::string writeDate();
 	int compare(const Date& pattern) const;
 	Date(int d, int m, int y);
 	Date() = default;

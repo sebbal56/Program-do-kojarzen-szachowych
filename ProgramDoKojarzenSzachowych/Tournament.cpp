@@ -1,6 +1,6 @@
 #include "Tournament.h"
 
-Tournament::Tournament(std::string name, Date date, std::string arbiter, std::string place, std::string about) {
+Tournament::Tournament(std::string name, Date date, std::string place, std::string arbiter, std::string about) {
 	tournamentName = name;
 	tournamentDate = date;
 	tournamentArbiter = arbiter;

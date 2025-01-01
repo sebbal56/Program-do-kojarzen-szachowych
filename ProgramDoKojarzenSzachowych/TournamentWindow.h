@@ -2,14 +2,20 @@
 #define TOURNAMENTWINDOW_H
 
 #include <wx/wx.h>
+#include <wx/filedlg.h>
+#include <wx/wfstream.h>
+#include <wx/txtstrm.h>
+#include <wx/log.h>
 #include "MainFrame.h"
 #include "Tournament.h"
 
 
 class TournamentWindow : public wxPanel {
 public:
-    TournamentWindow(wxWindow* parent, Tournament tournament);
+    TournamentWindow(wxWindow* parent, Tournament t);
 private:
+    void OnSaveTournament(wxCommandEvent& event);
+    Tournament tournament;
     wxStaticText* mainLabel;
     wxStaticText* tournamentLabel;
     wxStaticText* arbiterLabel;

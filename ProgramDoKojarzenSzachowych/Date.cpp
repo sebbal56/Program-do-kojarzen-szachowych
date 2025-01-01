@@ -35,3 +35,14 @@ Date::Date(int d, int m, int y) {
 	month = m;
 	year = y;
 }
+
+int Date::getDay() {
+	return day;
+}
+int Date::getMonth() {
+	return month;
+}
+int Date::getYear() {
+	return year;
+}
+

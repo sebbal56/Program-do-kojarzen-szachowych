@@ -12,5 +12,8 @@ public:
 	int compare(const Date& pattern) const;
 	Date(int d, int m, int y);
 	Date() = default;
+	int getDay();
+	int getMonth();
+	int getYear();
 };
 

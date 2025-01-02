@@ -41,13 +41,13 @@ InfoPanel::InfoPanel(wxWindow* parent, Tournament& tournament)
     
     // Dodanie poziomego sizer-a dla placeLabel i placeLabel2
     wxBoxSizer* placeSizer = new wxBoxSizer(wxHORIZONTAL);
-    placeSizer->Add(placeLabel, 0, wxALIGN_LEFT | wxRIGHT, 10); // Margines z prawej strony
+    placeSizer->Add(placeLabel, 0, wxALIGN_LEFT | wxRIGHT, 30); // Margines z prawej strony
     placeSizer->Add(placeLabel2, 1, wxEXPAND); // Rozci¹gniêcie na resztê linii
 
     sizer->Add(placeSizer, 0, wxEXPAND | wxTOP, 20); // Dodanie poziomego sizer-a
 
     wxBoxSizer* dateSizer = new wxBoxSizer(wxHORIZONTAL);
-    dateSizer->Add(dateLabel, 0, wxALIGN_LEFT | wxRIGHT, 10); // Margines z prawej strony
+    dateSizer->Add(dateLabel, 0, wxALIGN_LEFT | wxRIGHT, 110); // Margines z prawej strony
     dateSizer->Add(dateLabel2, 1, wxEXPAND); // Rozci¹gniêcie na resztê linii
 
     sizer->Add(dateSizer, 0, wxEXPAND | wxTOP, 20); // Dodanie poziomego sizer-a
@@ -57,7 +57,7 @@ InfoPanel::InfoPanel(wxWindow* parent, Tournament& tournament)
     //sizer->Add(dateLabel2, 0, wxALIGN_LEFT | wxTOP, 10);
 
     wxBoxSizer* arbiterSizer = new wxBoxSizer(wxHORIZONTAL);
-    arbiterSizer->Add(arbiterLabel, 0, wxALIGN_LEFT | wxRIGHT, 10); // Margines z prawej strony
+    arbiterSizer->Add(arbiterLabel, 0, wxALIGN_LEFT | wxRIGHT, 90); // Margines z prawej strony
     arbiterSizer->Add(arbiterLabel2, 1, wxEXPAND); // Rozci¹gniêcie na resztê linii
 
     sizer->Add(arbiterSizer, 0, wxEXPAND | wxTOP, 20); // Dodanie poziomego sizer-a

@@ -3,19 +3,23 @@
 
 #include <wx/wx.h>
 #include <wx/listbox.h>
+#include "Tournament.h"
+#include "AddPlayerPanel.h"
 
 class StartingListPanel : public wxPanel {
 public:
-    // Konstruktor
-    StartingListPanel(wxWindow* parent);
+    StartingListPanel(wxWindow* parent, Tournament t);
 
 private:
-    // Komponenty interfejsu u¿ytkownika
-    wxStaticText* titleLabel;
-    wxListBox* listBox;
 
-    // Metoda pomocnicza, aby utworzyæ komponenty panelu
-    void CreateUI();
+    wxListBox* listBox;
+    wxButton* newPlayerButton;
+
+    void OnAddPlayer(wxCommandEvent& event);
+
+    wxDECLARE_EVENT_TABLE();
+
+
 };
 
 #endif // STARTING_LIST_PANEL_H

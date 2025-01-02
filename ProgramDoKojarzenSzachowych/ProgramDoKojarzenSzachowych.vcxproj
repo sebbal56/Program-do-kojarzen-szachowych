@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AddPlayerPanel.cpp" />
     <ClCompile Include="AppLogic.cpp" />
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="InfoPanel.cpp" />
@@ -148,6 +149,7 @@
     <ClCompile Include="TournamentWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddPlayerPanel.h" />
     <ClInclude Include="AppLogic.h" />
     <ClInclude Include="Date.h" />
     <ClInclude Include="InfoPanel.h" />

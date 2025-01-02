@@ -74,7 +74,7 @@ void TournamentWindow::OnShowStartingList(wxCommandEvent& event) {
     // Zast¹pienie zawartoœci panelu dynamicznego list¹ startow¹
     contentPanel->DestroyChildren();
 
-    StartingListPanel* startingListPanel = new StartingListPanel(contentPanel);
+    StartingListPanel* startingListPanel = new StartingListPanel(contentPanel, tournament);
     wxBoxSizer* contentSizer = new wxBoxSizer(wxVERTICAL);
     contentSizer->Add(startingListPanel, 1, wxEXPAND);
     contentPanel->SetSizer(contentSizer);

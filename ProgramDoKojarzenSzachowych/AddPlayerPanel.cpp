@@ -4,7 +4,9 @@ wxBEGIN_EVENT_TABLE(AddPlayerPanel, wxPanel)
 EVT_BUTTON(wxID_ANY, AddPlayerPanel::OnSaveButtonClicked)
 wxEND_EVENT_TABLE()
 
-AddPlayerPanel::AddPlayerPanel(wxWindow* parent) : wxPanel(parent) {
+AddPlayerPanel::AddPlayerPanel(wxWindow* parent, Tournament& t) : wxPanel(parent) {
+
+    tournament = t;
 
     wxStaticText* mainLabel = new wxStaticText(this, wxID_ANY, "Dodawanie nowego zawodnika", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
     wxStaticText* surnameLabel = new wxStaticText(this, wxID_ANY, "Nazwisko", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
@@ -16,16 +18,16 @@ AddPlayerPanel::AddPlayerPanel(wxWindow* parent) : wxPanel(parent) {
     wxStaticText* monthLabel = new wxStaticText(this, wxID_ANY, "Miesi¹c", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
     wxStaticText* yearLabel = new wxStaticText(this, wxID_ANY, "Rok", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
 
-    wxTextCtrl* surnameInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(200, 30));
-    wxTextCtrl* nameInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(200, 30));
-    wxTextCtrl* clubInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(200, 30));
-    wxTextCtrl* ratingInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(200, 30));
-    wxTextCtrl* dayInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(30, 30));
-    wxTextCtrl* monthInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(30, 30));
-    wxTextCtrl* yearInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(50, 30));
-    
-    
-    wxButton* saveButton = new wxButton(this, wxID_ANY, "Zapisz", wxDefaultPosition, wxSize(100, 30));
+    surnameInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(200, 30));
+    nameInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(200, 30));
+    clubInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(200, 30));
+    ratingInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(200, 30));
+    dayInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(30, 30));
+    monthInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(30, 30));
+    yearInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(50, 30));
+
+
+    saveButton = new wxButton(this, wxID_ANY, "Zapisz", wxDefaultPosition, wxSize(100, 30));
     saveButton->Bind(wxEVT_BUTTON, &AddPlayerPanel::OnSaveButtonClicked, this);
 
     wxFont font(14, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
@@ -83,8 +85,20 @@ AddPlayerPanel::AddPlayerPanel(wxWindow* parent) : wxPanel(parent) {
 }
 
 
-// Funkcja obs³ugi klikniêcia przycisku
 void AddPlayerPanel::OnSaveButtonClicked(wxCommandEvent& event) {
+
+    wxString surname = surnameInput->GetValue();
+    wxString name = nameInput->GetValue();
+    wxString club = clubInput->GetValue();
+    wxString rating = ratingInput->GetValue();
+    wxString day = dayInput->GetValue();
+    wxString month = monthInput->GetValue();
+    wxString year = yearInput->GetValue();
+    long ratingValue = 0;
+    rating.ToLong(&ratingValue); // Konwersja do liczby, jeœli potrzebujesz
+    int rate = static_cast<int>(ratingValue);
+
+    Player p(surname.ToStdString(), name.ToStdString(), club.ToStdString(), Date(1, 2, 3), rate);
     // Czyszczenie pól wejœciowych
     surnameInput->Clear();
     nameInput->Clear();
@@ -94,5 +108,5 @@ void AddPlayerPanel::OnSaveButtonClicked(wxCommandEvent& event) {
     monthInput->Clear();
     yearInput->Clear();
 
-    wxMessageBox("Dane zawodnika zosta³y zapisane!", "Informacja", wxOK | wxICON_INFORMATION, this);
+    //wxMessageBox("Dane zawodnika zosta³y zapisane!", "Informacja", wxOK | wxICON_INFORMATION, this);
 }

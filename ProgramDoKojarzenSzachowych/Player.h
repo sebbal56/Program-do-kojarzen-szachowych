@@ -9,10 +9,16 @@
 
 class Player
 {
+public:
+	Player(std::string sn, std::string n, std::string club, Date bd, int rating);
+	int startingPosition;
+	int getRating();
+
+private:
 	std::string surname;
 	std::string name;
+	std::string club;
 	Date dateOfBirth;
-	int startingPosition;
 	int rating;
 	int points;
 	std::vector<std::pair<int, int>> playersPlayedWith; //z kim ju¿ gra³ i jaki wynik 

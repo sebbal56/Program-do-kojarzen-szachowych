@@ -24,3 +24,21 @@ std::string Tournament::getAbout() {
 Date Tournament::getDate() {
 	return tournamentDate;
 }
+
+void Tournament::addPlayerToList(Player p) {
+	if (listOfPlayers.size() == 0) {
+		p.startingPosition = 1;
+		listOfPlayers.push_back(p);
+		return;
+	}
+	for (int i = 0; i < listOfPlayers.size(); i++) {
+		if (listOfPlayers[i].getRating() < p.getRating()) {
+			p.startingPosition = i + 1;
+			listOfPlayers.insert(listOfPlayers.begin() + i, p);
+			for (int j = i; j < listOfPlayers.size(); j++) {
+				listOfPlayers[j].startingPosition++;
+			}
+			return;
+		}
+	}
+}

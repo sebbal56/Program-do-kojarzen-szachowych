@@ -18,5 +18,6 @@ public:
 	std::string getArbiter();
 	std::string getAbout();
 	Date getDate();
+	void addPlayerToList(Player p);
 };
 

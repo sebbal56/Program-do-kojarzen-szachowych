@@ -2,10 +2,11 @@
 #define ADDPLAYERPANEL_H
 
 #include <wx/wx.h>
+#include "Tournament.h"
 
 class AddPlayerPanel : public wxPanel {
 public:
-    AddPlayerPanel(wxWindow* parent);
+    AddPlayerPanel(wxWindow* parent, Tournament& t);
 
 private:
     wxTextCtrl* surnameInput;
@@ -15,6 +16,10 @@ private:
     wxTextCtrl* dayInput;
     wxTextCtrl* monthInput;
     wxTextCtrl* yearInput;
+
+    Tournament tournament;
+
+    wxButton* saveButton;
     void OnSaveButtonClicked(wxCommandEvent& event);
 
     wxDECLARE_EVENT_TABLE();

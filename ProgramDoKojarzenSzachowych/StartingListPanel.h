@@ -14,7 +14,7 @@ private:
 
     wxListBox* listBox;
     wxButton* newPlayerButton;
-    Tournament tournament;
+    Tournament* tournament;
 
     void OnAddPlayer(wxCommandEvent& event);
 

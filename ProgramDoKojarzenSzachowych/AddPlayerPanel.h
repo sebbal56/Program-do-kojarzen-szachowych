@@ -6,7 +6,7 @@
 
 class AddPlayerPanel : public wxPanel {
 public:
-    AddPlayerPanel(wxWindow* parent, Tournament& t);
+    AddPlayerPanel(wxWindow* parent, Tournament* t);
 
 private:
     wxTextCtrl* surnameInput;
@@ -17,7 +17,7 @@ private:
     wxTextCtrl* monthInput;
     wxTextCtrl* yearInput;
 
-    Tournament tournament;
+    Tournament* tournament;
 
     wxButton* saveButton;
     void OnSaveButtonClicked(wxCommandEvent& event);

@@ -14,7 +14,7 @@ int Player::getRating() {
 	return rating;
 }
 
-std::string Player::playerInfo()
+const std::string Player::playerInfo()
 {
 	return surname + ", " + name;
 }

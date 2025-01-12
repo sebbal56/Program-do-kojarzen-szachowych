@@ -5,7 +5,7 @@ EVT_BUTTON(wxID_ANY, AddPlayerPanel::OnSaveButtonClicked)
 wxEND_EVENT_TABLE()
 
 
-AddPlayerPanel::AddPlayerPanel(wxWindow* parent, Tournament& t) : wxPanel(parent) {
+AddPlayerPanel::AddPlayerPanel(wxWindow* parent, Tournament* t) : wxPanel(parent) {
 
     tournament = t;
 
@@ -102,7 +102,7 @@ void AddPlayerPanel::OnSaveButtonClicked(wxCommandEvent& event) {
     int rate = static_cast<int>(ratingValue);
 
     Player p(surname.ToStdString(), name.ToStdString(), club.ToStdString(), Date(day, month, year), rate);
-    tournament.listOfPlayers.push_back(p);
+    tournament->listOfPlayers.push_back(p);
     // Czyszczenie pól wejœciowych
     surnameInput->Clear();
     nameInput->Clear();

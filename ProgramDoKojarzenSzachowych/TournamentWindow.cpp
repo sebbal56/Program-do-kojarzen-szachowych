@@ -87,11 +87,11 @@ void TournamentWindow::OnSaveTournament(wxCommandEvent& event) {
     text << tournament -> getAbout() << "\n";
     text << "END_OF_TOURNAMENT_DATA" << "\n";
 
-    text << "BEGIN_LIST_OF_PLAYERS" << "\n";
+    text << "BEGIN_OF_LIST_OF_PLAYERS" << "\n";
     for (auto& player : tournament->listOfPlayers) {
         text << player.playerToFile() << "\n";
     }
-    text << "END_LIST_OF_PLAYERS" << "\n";
+    text << "END_OF_LIST_OF_PLAYERS" << "\n";
 
     wxLogMessage("Dane turnieju zapisane pomyœlnie.");
 }

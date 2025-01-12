@@ -63,19 +63,16 @@ void MainFrame::OnLoadTournament(wxCommandEvent& event) {
     wxString line;
 
     wxString name, place, day, month, year, arbiter, about;
-    int breakIndex;
+    int breakIndex = 0;
+ 
 
-    for (size_t i = 0; i < file.GetLineCount() || line != "END_OF_TOURNAMENT_DATA"; i++) {
+    for(size_t i = 0 ; i < file.GetLineCount() || line != "END_OF_TOURNAMENT_DATA"; i++) {
         line = file[i];
         if (line == "END_OF_TOURNAMENT_DATA") {
-            breakIndex = i;
+            breakIndex = i + 2;
             break;
         }
-        //if (line.StartsWith("Nazwa: ")) name = line.AfterFirst(' ');
-        //else if (line.StartsWith("Miejscowoœæ: ")) place = line.AfterFirst(' ');
-        //else if (line.StartsWith("Data: ")) date = line.AfterFirst(' ');
-        //else if (line.StartsWith("Sêdzia: ")) arbiter = line.AfterFirst(' ');
-        //else if (line.StartsWith("Opis: ")) about = line.AfterFirst(' ');
+
         if (i == 0) name = line;
         else if (i == 1) place = line;
         else if (i == 2) day = line;
@@ -86,10 +83,22 @@ void MainFrame::OnLoadTournament(wxCommandEvent& event) {
         else if (i > 6) about += line;
     }
 
+    Tournament* tournament = new Tournament(name.ToStdString(), Date(day, month, year), place.ToStdString(), arbiter.ToStdString(), about.ToStdString());
+
+    for (size_t i = breakIndex; i < file.GetLineCount() || line != "END_OF_LIST_OF_PLAYERS"; i++) {
+        line = file[i];
+        if (line == "END_OF_LIST_OF_PLAYERS") {
+            breakIndex = i;
+            break;
+        }
+        tournament->listOfPlayers.push_back(Player(line.ToStdString()));
+    }
+
+
     file.Close();
 
 
-    Tournament* tournament = new Tournament(name.ToStdString(),Date(day, month, year), place.ToStdString(), arbiter.ToStdString(), about.ToStdString());
+    //Tournament* tournament = new Tournament(name.ToStdString(),Date(day, month, year), place.ToStdString(), arbiter.ToStdString(), about.ToStdString());
 
     // Przejœcie do TournamentWindow
     this->DestroyChildren(); // Usuñ obecne komponenty

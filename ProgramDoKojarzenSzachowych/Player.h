@@ -11,6 +11,7 @@ class Player
 {
 public:
 	Player(std::string sn, std::string n, std::string club, Date bd, int rating);
+	Player(std::string line);
 	int startingPosition;
 	int getRating();
 	const std::string playerInfo();

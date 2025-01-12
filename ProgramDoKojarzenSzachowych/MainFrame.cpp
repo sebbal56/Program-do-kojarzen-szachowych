@@ -24,6 +24,8 @@ MainFrame::MainFrame(const wxString& title)
     loadButton->SetFont(font);
     newButton->SetFont(font);
 
+    Bind(wxEVT_MENU, &MainFrame::OnSaveTournament, this, wxID_SAVE);
+
 }
 
 void MainFrame::OnRunLogic(wxCommandEvent& event) {
@@ -98,4 +100,16 @@ void MainFrame::OnLoadTournament(wxCommandEvent& event) {
 
     this->SetSizer(sizer);
     this->Layout(); // Odœwie¿ uk³ad
+}
+
+void MainFrame::OnSaveTournament(wxCommandEvent& event) {
+    wxLogMessage("Wywo³ano zapis turnieju z menu.");
+    // Przeka¿ zdarzenie do aktywnego TournamentWindow
+    TournamentWindow* tournamentWindow = dynamic_cast<TournamentWindow*>(FindWindowByLabel("TournamentWindowLabel")); // U¿yj identyfikatora okna
+    if (tournamentWindow) {
+        tournamentWindow->OnSaveTournament(event);
+    }
+    else {
+        wxLogError("Nie znaleziono aktywnego okna turnieju.");
+    }
 }

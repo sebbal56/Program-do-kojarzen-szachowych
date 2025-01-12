@@ -3,6 +3,21 @@
 
 TournamentWindow::TournamentWindow(wxWindow* parent, Tournament* t) : wxPanel(parent) {
     tournament = t;
+    SetLabel("TournamentWindowLabel");
+
+    // Tworzenie menu
+    wxMenuBar* menuBar = new wxMenuBar();
+
+    // Menu "Plik"
+    wxMenu* fileMenu = new wxMenu();
+    fileMenu->Append(wxID_SAVE, "Zapisz turniej\tCtrl+S", "Zapisz dane turnieju");
+    menuBar->Append(fileMenu, "Plik");
+
+    // Ustawienie menu dla okna nadrzêdnego
+    wxFrame* parentFrame = dynamic_cast<wxFrame*>(GetParent());
+    if (parentFrame) {
+        parentFrame->SetMenuBar(menuBar);
+    }
 
     // Panel z przyciskami (po lewej stronie)
     wxPanel* buttonPanel = new wxPanel(this);
@@ -39,11 +54,16 @@ TournamentWindow::TournamentWindow(wxWindow* parent, Tournament* t) : wxPanel(pa
     // Zdarzenia
     Bind(wxEVT_BUTTON, &TournamentWindow::OnShowStartingList, this, startingListButton->GetId());
     Bind(wxEVT_BUTTON, &TournamentWindow::OnShowInfoPanel, this, mainButton->GetId());
+    Bind(wxEVT_MENU, &TournamentWindow::OnSaveTournament, this, wxID_SAVE);
     //Bind(wxEVT_BUTTON, &TournamentWindow::OnShowResults, this, resultsButton->GetId());
 }
 
-// Obs³uga zapisu danych turnieju
+
+
+
 void TournamentWindow::OnSaveTournament(wxCommandEvent& event) {
+    wxLogMessage("Wywo³ano funkcjê zapisu turnieju.");
+
     wxFileDialog saveFileDialog(this, _("Zapisz dane turnieju"), "", "tournament_data.txt",
         "Pliki tekstowe (*.txt)|*.txt", wxFD_SAVE | wxFD_OVERWRITE_PROMPT
     );
@@ -67,11 +87,18 @@ void TournamentWindow::OnSaveTournament(wxCommandEvent& event) {
     text << tournament -> getAbout() << "\n";
     text << "END_OF_TOURNAMENT_DATA" << "\n";
 
+    text << "BEGIN_LIST_OF_PLAYERS" << "\n";
+    for (auto& player : tournament->listOfPlayers) {
+        text << player.playerToFile() << "\n";
+    }
+    text << "END_LIST_OF_PLAYERS" << "\n";
+
     wxLogMessage("Dane turnieju zapisane pomyœlnie.");
 }
 
+
+
 void TournamentWindow::OnShowStartingList(wxCommandEvent& event) {
-    // Zast¹pienie zawartoœci panelu dynamicznego list¹ startow¹
     contentPanel->DestroyChildren();
 
     StartingListPanel* startingListPanel = new StartingListPanel(contentPanel, tournament);
@@ -81,8 +108,10 @@ void TournamentWindow::OnShowStartingList(wxCommandEvent& event) {
     contentPanel->Layout();
 }
 
+
+
+
 void TournamentWindow::OnShowInfoPanel(wxCommandEvent& event) {
-    // Zast¹pienie zawartoœci panelu dynamicznego list¹ startow¹
     contentPanel->DestroyChildren();
 
     InfoPanel* startingListPanel = new InfoPanel(contentPanel, tournament);

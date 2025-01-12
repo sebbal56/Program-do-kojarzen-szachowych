@@ -14,6 +14,8 @@ public:
 	int startingPosition;
 	int getRating();
 	const std::string playerInfo();
+	//friend std::ostream& operator<<(std::ostream& os, const Player& player);
+	std::string playerToFile();
 
 private:
 	std::string surname;

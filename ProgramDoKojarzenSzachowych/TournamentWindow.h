@@ -15,8 +15,8 @@
 class TournamentWindow : public wxPanel {
 public:
     TournamentWindow(wxWindow* parent, Tournament* t);
-private:
     void OnSaveTournament(wxCommandEvent& event);
+private:
     void OnShowStartingList(wxCommandEvent& event);
     void OnShowInfoPanel(wxCommandEvent& event);
     wxPanel* contentPanel;

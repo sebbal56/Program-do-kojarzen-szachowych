@@ -10,12 +10,10 @@ MainFrame::MainFrame(const wxString& title)
 
     wxPanel* panel = new wxPanel(this);
 
-    // Przycisk
     wxButton* loadButton = new wxButton(panel, wxID_ANY, "Wczytaj turniej", wxPoint(250, 100), wxSize(300, 150));
     Bind(wxEVT_BUTTON, &MainFrame::OnLoadTournament, this, loadButton->GetId());
 
 
-    //przycisk
     wxButton* newButton = new wxButton(panel, wxID_ANY, "Utwórz turniej", wxPoint(250, 300), wxSize(300, 150));
     Bind(wxEVT_BUTTON, &MainFrame::OnCreateTournament, this, newButton->GetId());
 
@@ -33,7 +31,7 @@ void MainFrame::OnRunLogic(wxCommandEvent& event) {
 }
 
 void MainFrame::OnCreateTournament(wxCommandEvent& event) {
-    this->DestroyChildren(); // Usuñ obecne komponenty
+    this->DestroyChildren();
     TournamentCreator* creatorPanel = new TournamentCreator(this);
     // Stwórz sizer i dodaj panel
     wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
@@ -41,7 +39,7 @@ void MainFrame::OnCreateTournament(wxCommandEvent& event) {
 
     // Ustaw sizer dla MainFrame
     this->SetSizer(sizer);
-    this->Layout(); // Odœwie¿ uk³ad
+    this->Layout();
 }
 
 
@@ -50,7 +48,7 @@ void MainFrame::OnLoadTournament(wxCommandEvent& event) {
     wxFileDialog openFileDialog(this, _("Wybierz plik turnieju"), "", "", "Pliki tekstowe (*.txt)|*.txt",wxFD_OPEN | wxFD_FILE_MUST_EXIST);
 
     if (openFileDialog.ShowModal() == wxID_CANCEL) {
-        return; // U¿ytkownik anulowa³ wybór pliku
+        return;
     }
 
     wxString filePath = openFileDialog.GetPath();
@@ -97,18 +95,14 @@ void MainFrame::OnLoadTournament(wxCommandEvent& event) {
 
     file.Close();
 
-
-    //Tournament* tournament = new Tournament(name.ToStdString(),Date(day, month, year), place.ToStdString(), arbiter.ToStdString(), about.ToStdString());
-
-    // Przejœcie do TournamentWindow
-    this->DestroyChildren(); // Usuñ obecne komponenty
+    this->DestroyChildren();
     TournamentWindow* tournamentWindow = new TournamentWindow(this, tournament);
 
     wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
     sizer->Add(tournamentWindow, 1, wxEXPAND);
 
     this->SetSizer(sizer);
-    this->Layout(); // Odœwie¿ uk³ad
+    this->Layout();
 }
 
 void MainFrame::OnSaveTournament(wxCommandEvent& event) {

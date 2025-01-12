@@ -89,10 +89,10 @@ void TournamentCreator::OnNext(wxCommandEvent& event) {
     this->Hide();
 
     wxWindow* parent = this->GetParent();
-    Tournament t(tournamentName.ToStdString(), Date(tournamentDay, tournamentMonth, tournamentYear),
+    Tournament* t = new Tournament(tournamentName.ToStdString(), Date(tournamentDay, tournamentMonth, tournamentYear),
         tournamentPlace.ToStdString(), tournamentArbiter.ToStdString(), tournamentAbout.ToStdString());
 
-    TournamentWindow* tournamentWindow = new TournamentWindow(parent, &t);
+    TournamentWindow* tournamentWindow = new TournamentWindow(parent, t);
 
     // Ustawiamy sizer i uk³ad
     wxBoxSizer* sizer = dynamic_cast<wxBoxSizer*>(parent->GetSizer());

@@ -13,6 +13,7 @@ public:
 	Player(std::string sn, std::string n, std::string club, Date bd, int rating);
 	int startingPosition;
 	int getRating();
+	std::string playerInfo();
 
 private:
 	std::string surname;

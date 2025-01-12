@@ -2,17 +2,6 @@
 
 
 
-void Date::setDate()
-{
-    std::cout << "Podaj dzien: ";
-    std::cin >> day;
-    std::cout << "Podaj miesiac: ";
-    std::cin >> month;
-    std::cout << "Podaj rok: ";
-    std::cin >> year;
-}
-
-
 std::string Date::writeDate()
 {
     return  std::to_string(day) + '-' + std::to_string(month) + '-' + std::to_string(year);
@@ -34,6 +23,12 @@ Date::Date(int d, int m, int y) {
 	day = d;
 	month = m;
 	year = y;
+}
+
+Date::Date(wxString d, wxString m, wxString y) {
+	day = std::stoi(d.ToStdString()); 
+	month = std::stoi(m.ToStdString());
+	year = std::stoi(y.ToStdString());
 }
 
 int Date::getDay() {

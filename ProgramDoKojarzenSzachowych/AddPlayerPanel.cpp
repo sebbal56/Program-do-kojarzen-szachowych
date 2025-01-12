@@ -4,6 +4,7 @@ wxBEGIN_EVENT_TABLE(AddPlayerPanel, wxPanel)
 EVT_BUTTON(wxID_ANY, AddPlayerPanel::OnSaveButtonClicked)
 wxEND_EVENT_TABLE()
 
+
 AddPlayerPanel::AddPlayerPanel(wxWindow* parent, Tournament& t) : wxPanel(parent) {
 
     tournament = t;
@@ -85,6 +86,8 @@ AddPlayerPanel::AddPlayerPanel(wxWindow* parent, Tournament& t) : wxPanel(parent
 }
 
 
+
+
 void AddPlayerPanel::OnSaveButtonClicked(wxCommandEvent& event) {
 
     wxString surname = surnameInput->GetValue();
@@ -95,10 +98,11 @@ void AddPlayerPanel::OnSaveButtonClicked(wxCommandEvent& event) {
     wxString month = monthInput->GetValue();
     wxString year = yearInput->GetValue();
     long ratingValue = 0;
-    rating.ToLong(&ratingValue); // Konwersja do liczby, jeœli potrzebujesz
+    rating.ToLong(&ratingValue); 
     int rate = static_cast<int>(ratingValue);
 
-    Player p(surname.ToStdString(), name.ToStdString(), club.ToStdString(), Date(1, 2, 3), rate);
+    Player p(surname.ToStdString(), name.ToStdString(), club.ToStdString(), Date(day, month, year), rate);
+    tournament.listOfPlayers.push_back(p);
     // Czyszczenie pól wejœciowych
     surnameInput->Clear();
     nameInput->Clear();

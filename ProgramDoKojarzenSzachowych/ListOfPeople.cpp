@@ -33,14 +33,14 @@ void ListOfPeople::addPerson(const Person& p)
 	//m_nLiczbaPracownikow++;
 }
 
-void ListOfPeople::writeAllPeople() const
-{
-	Person* x = head;
-	while (x != nullptr) {
-		x->writePerson();
-		x = x->next;
-	}
-}
+//void ListOfPeople::writeAllPeople() const
+//{
+//	Person* x = head;
+//	while (x != nullptr) {
+//		x->writePerson();
+//		x = x->next;
+//	}
+//}
 
 std::string ListOfPeople::getSurnameOfHead() {
 	return head->getSurname();

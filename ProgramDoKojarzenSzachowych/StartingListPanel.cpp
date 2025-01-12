@@ -5,7 +5,7 @@ wxBEGIN_EVENT_TABLE(StartingListPanel, wxPanel)
     EVT_BUTTON(wxID_ANY, StartingListPanel::OnAddPlayer)
 wxEND_EVENT_TABLE()
 
-    StartingListPanel::StartingListPanel(wxWindow* parent, Tournament t) : wxPanel(parent) {
+    StartingListPanel::StartingListPanel(wxWindow* parent, Tournament& t) : wxPanel(parent) {
     tournament = t;
 
         // Dodaj komponenty listy startowej
@@ -13,6 +13,8 @@ wxEND_EVENT_TABLE()
         listBox->Append("Zawodnik 1");
         listBox->Append("Zawodnik 2");
         listBox->Append("Zawodnik 3");
+        //TO DO
+        if(tournament.listOfPlayers.size() > 0)listBox->Append(tournament.listOfPlayers[0].playerInfo());
 
         //przycisk dodawania nowego zawodnika
         newPlayerButton = new wxButton(this, wxID_ANY, "Dodaj nowego zawodnika", wxDefaultPosition, wxSize(160, 40));

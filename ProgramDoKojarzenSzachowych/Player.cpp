@@ -13,3 +13,8 @@ Player::Player(std::string sn, std::string n, std::string c, Date bd, int r) {
 int Player::getRating() {
 	return rating;
 }
+
+std::string Player::playerInfo()
+{
+	return surname + ", " + name;
+}

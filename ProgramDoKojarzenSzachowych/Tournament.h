@@ -9,8 +9,9 @@ class Tournament
 	std::string tournamentArbiter;
 	std::string tournamentPlace;
 	std::string tournamentAbout;
-	std::vector<Player> listOfPlayers;
+
 public:
+	std::vector<Player> listOfPlayers;
 	Tournament(std::string name, Date date, std::string place, std::string arbiter, std::string about);
 	Tournament() = default;
 	std::string getName();

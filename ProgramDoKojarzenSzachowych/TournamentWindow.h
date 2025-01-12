@@ -14,13 +14,13 @@
 
 class TournamentWindow : public wxPanel {
 public:
-    TournamentWindow(wxWindow* parent, Tournament t);
+    TournamentWindow(wxWindow* parent, Tournament* t);
 private:
     void OnSaveTournament(wxCommandEvent& event);
     void OnShowStartingList(wxCommandEvent& event);
     void OnShowInfoPanel(wxCommandEvent& event);
     wxPanel* contentPanel;
-    Tournament tournament;
+    Tournament* tournament;
     wxStaticText* mainLabel;
     wxStaticText* tournamentLabel;
     wxStaticText* arbiterLabel;

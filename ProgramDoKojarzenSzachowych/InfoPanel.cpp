@@ -2,23 +2,23 @@
 
 #include "InfoPanel.h"
 
-InfoPanel::InfoPanel(wxWindow* parent, Tournament& tournament)
+InfoPanel::InfoPanel(wxWindow* parent, Tournament* tournament)
     : wxPanel(parent), tournament(tournament) {
 
     mainLabel = new wxStaticText(this, wxID_ANY, "TURNIEJ", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
-    tournamentLabel = new wxStaticText(this, wxID_ANY, tournament.getName(), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
+    tournamentLabel = new wxStaticText(this, wxID_ANY, tournament -> getName(), wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
 
     placeLabel = new wxStaticText(this, wxID_ANY, "Miejscowoœæ:", wxPoint(300, 120));
-    placeLabel2 = new wxStaticText(this, wxID_ANY, tournament.getPlace(), wxPoint(450, 120));
+    placeLabel2 = new wxStaticText(this, wxID_ANY, tournament -> getPlace(), wxPoint(450, 120));
 
     dateLabel = new wxStaticText(this, wxID_ANY, "Data:", wxPoint(300, 170));
-    dateLabel2 = new wxStaticText(this, wxID_ANY, tournament.getDate().writeDate(), wxPoint(450, 170));
+    dateLabel2 = new wxStaticText(this, wxID_ANY, tournament -> getDate().writeDate(), wxPoint(450, 170));
 
     arbiterLabel = new wxStaticText(this, wxID_ANY, "Sêdzia:", wxPoint(300, 220));
-    arbiterLabel2 = new wxStaticText(this, wxID_ANY, tournament.getArbiter(), wxPoint(450, 220));
+    arbiterLabel2 = new wxStaticText(this, wxID_ANY, tournament -> getArbiter(), wxPoint(450, 220));
 
     aboutLabel = new wxStaticText(this, wxID_ANY, "Opis turnieju:", wxPoint(300, 270));
-    aboutLabel2 = new wxStaticText(this, wxID_ANY, tournament.getAbout(), wxPoint(300, 300), wxSize(400, 300), wxST_NO_AUTORESIZE);
+    aboutLabel2 = new wxStaticText(this, wxID_ANY, tournament -> getAbout(), wxPoint(300, 300), wxSize(400, 300), wxST_NO_AUTORESIZE);
 
     wxFont font(14, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
     wxFont font2(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);

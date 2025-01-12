@@ -8,7 +8,7 @@
 
 class StartingListPanel : public wxPanel {
 public:
-    StartingListPanel(wxWindow* parent, Tournament& t);
+    StartingListPanel(wxWindow* parent, Tournament* t);
 
 private:
 

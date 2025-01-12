@@ -1,7 +1,7 @@
 #include "TournamentWindow.h"
 
 
-TournamentWindow::TournamentWindow(wxWindow* parent, Tournament t) : wxPanel(parent) {
+TournamentWindow::TournamentWindow(wxWindow* parent, Tournament* t) : wxPanel(parent) {
     tournament = t;
 
     // Panel z przyciskami (po lewej stronie)
@@ -58,13 +58,13 @@ void TournamentWindow::OnSaveTournament(wxCommandEvent& event) {
     }
 
     wxTextOutputStream text(output_stream);
-    text << tournament.getName() << "\n";
-    text << tournament.getPlace() << "\n";
-    text << tournament.getDate().getDay() << "\n";
-    text << tournament.getDate().getMonth() << "\n";
-    text << tournament.getDate().getYear() << "\n";
-    text << tournament.getArbiter() << "\n";
-    text << tournament.getAbout() << "\n";
+    text << tournament -> getName() << "\n";
+    text << tournament -> getPlace() << "\n";
+    text << tournament -> getDate().getDay() << "\n";
+    text << tournament -> getDate().getMonth() << "\n";
+    text << tournament -> getDate().getYear() << "\n";
+    text << tournament -> getArbiter() << "\n";
+    text << tournament -> getAbout() << "\n";
     text << "END_OF_TOURNAMENT_DATA" << "\n";
 
     wxLogMessage("Dane turnieju zapisane pomyœlnie.");

@@ -5,7 +5,7 @@
 
 class InfoPanel : public wxPanel {
 public:
-    InfoPanel(wxWindow* parent, Tournament& tournament);
+    InfoPanel(wxWindow* parent, Tournament* tournament);
 
 private:
     wxStaticText* mainLabel;
@@ -19,5 +19,5 @@ private:
     wxStaticText* aboutLabel;
     wxStaticText* aboutLabel2;
 
-    Tournament tournament;
+    Tournament* tournament;
 };

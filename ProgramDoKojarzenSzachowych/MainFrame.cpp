@@ -85,33 +85,9 @@ void MainFrame::OnLoadTournament(wxCommandEvent& event) {
     }
 
     file.Close();
-    long temp;
-    int d, m, y;
-    if (day.ToLong(&temp)) {
-        d = static_cast<int>(temp);
-    }
-    else {
-        wxLogError("B³¹d z wczytaniem daty!");
-        d = 0; 
-    }
 
-    if (month.ToLong(&temp)) {
-        m = static_cast<int>(temp);
-    }
-    else {
-        wxLogError("B³¹d z wczytaniem daty!");
-        m = 0; 
-    }
 
-    if (year.ToLong(&temp)) {
-        y = static_cast<int>(temp);
-    }
-    else {
-        wxLogError("B³¹d z wczytaniem daty!");
-        y = 0; 
-    }
-
-    Tournament tournament(name.ToStdString(),Date(d, m, y), place.ToStdString(), arbiter.ToStdString(), about.ToStdString());
+    Tournament* tournament = new Tournament(name.ToStdString(),Date(day, month, year), place.ToStdString(), arbiter.ToStdString(), about.ToStdString());
 
     // Przejœcie do TournamentWindow
     this->DestroyChildren(); // Usuñ obecne komponenty

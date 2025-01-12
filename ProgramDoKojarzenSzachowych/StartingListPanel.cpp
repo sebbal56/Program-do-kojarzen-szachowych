@@ -5,8 +5,8 @@ wxBEGIN_EVENT_TABLE(StartingListPanel, wxPanel)
     EVT_BUTTON(wxID_ANY, StartingListPanel::OnAddPlayer)
 wxEND_EVENT_TABLE()
 
-    StartingListPanel::StartingListPanel(wxWindow* parent, Tournament& t) : wxPanel(parent) {
-    tournament = &t;
+    StartingListPanel::StartingListPanel(wxWindow* parent, Tournament* t) : wxPanel(parent) {
+    tournament = t;
 
         // Dodaj komponenty listy startowej
         listBox = new wxListBox(this, wxID_ANY, wxPoint(20, 60), wxSize(200, 200));

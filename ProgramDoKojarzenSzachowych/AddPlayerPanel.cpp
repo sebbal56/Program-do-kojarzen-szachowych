@@ -103,6 +103,7 @@ void AddPlayerPanel::OnSaveButtonClicked(wxCommandEvent& event) {
 
     Player p(surname.ToStdString(), name.ToStdString(), club.ToStdString(), Date(day, month, year), rate);
     tournament->listOfPlayers.push_back(p);
+    tournament->sortByRating(tournament->listOfPlayers);
     // Czyszczenie pól wejœciowych
     surnameInput->Clear();
     nameInput->Clear();

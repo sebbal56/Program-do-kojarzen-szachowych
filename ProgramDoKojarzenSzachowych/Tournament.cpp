@@ -42,3 +42,23 @@ void Tournament::addPlayerToList(Player p) {
 		}
 	}
 }
+
+bool Tournament::comparePlayersByRating(const Player& p1, const Player& p2)
+{
+	if (p1.getRating() != p2.getRating()) {
+		return p1.getRating() > p2.getRating();
+	}
+	// Jeœli rankingi s¹ takie same, porównaj po nazwisku
+	if (p1.getSurname() != p2.getSurname()) {
+		return p1.getSurname() < p2.getSurname();
+	}
+	// Jeœli nazwiska s¹ takie same, porównaj po imieniu
+	return p1.getName() < p2.getName();
+}
+
+void Tournament::sortByRating(std::vector<Player>& startingList){
+	std::sort(startingList.begin(), startingList.end(), comparePlayersByRating);
+	for (int i = 0; i < startingList.size(); i++) {
+		startingList[i].startingPosition = i + 1;
+	}
+}

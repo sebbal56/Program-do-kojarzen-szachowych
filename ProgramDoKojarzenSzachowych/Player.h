@@ -3,8 +3,9 @@
 #include <vector>
 #include <utility>
 #include "Date.h"
+#include <iomanip> // std::setw, std::setfill
+#include <sstream> // std::ostringstream
 
-// byæ mo¿e jakieœ dziedziczenie po person? idk jeszcze 
 
 
 class Player
@@ -13,11 +14,14 @@ public:
 	Player(std::string sn, std::string n, std::string club, Date bd, int rating);
 	Player(std::string line);
 	int startingPosition;
-	int getRating();
+	int getRating() const;
+	std::string getSurname() const;
+	std::string getName() const;
 	const std::string playerInfo();
 	//friend std::ostream& operator<<(std::ostream& os, const Player& player);
 	std::string playerToFile();
 
+	static int nextStartingNumber; 
 private:
 	std::string surname;
 	std::string name;

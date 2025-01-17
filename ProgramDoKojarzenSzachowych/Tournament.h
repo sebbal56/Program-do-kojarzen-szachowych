@@ -2,6 +2,8 @@
 #include <string>
 #include "Date.h"
 #include "Player.h"
+#include <algorithm>
+
 class Tournament
 {
 	std::string tournamentName;
@@ -20,5 +22,7 @@ public:
 	std::string getAbout();
 	Date getDate();
 	void addPlayerToList(Player p);
+	static bool comparePlayersByRating(const Player& p1, const Player& p2);
+	void sortByRating(std::vector<Player>& startingList);
 };
 

@@ -141,7 +141,7 @@
     <ClCompile Include="PeopleBaseManager.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="ResultPanel.cpp" />
+    <ClCompile Include="ResultsPanel.cpp" />
     <ClCompile Include="sqlite3.c" />
     <ClCompile Include="StartingListPanel.cpp" />
     <ClCompile Include="Tournament.cpp" />
@@ -158,7 +158,7 @@
     <ClInclude Include="PeopleBaseManager.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="ResultPanel.h" />
+    <ClInclude Include="ResultsPanel.h" />
     <ClInclude Include="sqlite3.h" />
     <ClInclude Include="StartingListPanel.h" />
     <ClInclude Include="Tournament.h" />

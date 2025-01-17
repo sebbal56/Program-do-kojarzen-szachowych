@@ -55,7 +55,7 @@ TournamentWindow::TournamentWindow(wxWindow* parent, Tournament* t) : wxPanel(pa
     Bind(wxEVT_BUTTON, &TournamentWindow::OnShowStartingList, this, startingListButton->GetId());
     Bind(wxEVT_BUTTON, &TournamentWindow::OnShowInfoPanel, this, mainButton->GetId());
     Bind(wxEVT_MENU, &TournamentWindow::OnSaveTournament, this, wxID_SAVE);
-    //Bind(wxEVT_BUTTON, &TournamentWindow::OnShowResults, this, resultsButton->GetId());
+    Bind(wxEVT_BUTTON, &TournamentWindow::OnShowResults, this, resultsButton->GetId());
 }
 
 
@@ -117,6 +117,16 @@ void TournamentWindow::OnShowInfoPanel(wxCommandEvent& event) {
     InfoPanel* startingListPanel = new InfoPanel(contentPanel, tournament);
     wxBoxSizer* contentSizer = new wxBoxSizer(wxVERTICAL);
     contentSizer->Add(startingListPanel, 1, wxEXPAND);
+    contentPanel->SetSizer(contentSizer);
+    contentPanel->Layout();
+}
+
+void TournamentWindow::OnShowResults(wxCommandEvent& event){
+    contentPanel->DestroyChildren();
+    
+    ResultsPanel* resultsPanel = new ResultsPanel(contentPanel, tournament);
+    wxBoxSizer* contentSizer = new wxBoxSizer(wxVERTICAL);
+    contentSizer->Add(resultsPanel, 1, wxEXPAND);
     contentPanel->SetSizer(contentSizer);
     contentPanel->Layout();
 }

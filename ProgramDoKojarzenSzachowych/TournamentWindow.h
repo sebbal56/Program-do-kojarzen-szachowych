@@ -10,6 +10,7 @@
 #include "Tournament.h"
 #include "StartingListPanel.h"
 #include "InfoPanel.h"
+#include "ResultsPanel.h"
 
 
 class TournamentWindow : public wxPanel {
@@ -19,6 +20,7 @@ public:
 private:
     void OnShowStartingList(wxCommandEvent& event);
     void OnShowInfoPanel(wxCommandEvent& event);
+    void OnShowResults(wxCommandEvent& event);
     wxPanel* contentPanel;
     Tournament* tournament;
     wxStaticText* mainLabel;

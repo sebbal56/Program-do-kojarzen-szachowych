@@ -26,11 +26,23 @@ TournamentWindow::TournamentWindow(wxWindow* parent, Tournament* t) : wxPanel(pa
     mainButton = new wxButton(buttonPanel, wxID_ANY, "Strona g³ówna", wxDefaultPosition, wxSize(160, 40));
     startingListButton = new wxButton(buttonPanel, wxID_ANY, "Lista startowa", wxDefaultPosition, wxSize(160, 40));
     resultsButton = new wxButton(buttonPanel, wxID_ANY, "Wyniki", wxDefaultPosition, wxSize(160, 40));
+
+
     
     buttonSizer->Add(mainButton, 0, wxALL, 10);
     buttonSizer->Add(startingListButton, 0, wxALL, 10);
     buttonSizer->Add(resultsButton, 0, wxALL, 10);
     buttonPanel->SetSizer(buttonSizer);
+
+    int r_num = 1;
+    for (auto& round : tournament->rounds) {
+        wxButton* roundButton = new wxButton(buttonPanel, wxID_ANY, "Runda " + std::to_string(r_num), wxDefaultPosition, wxSize(160, 30));
+
+        roundButton->Bind(wxEVT_BUTTON, [this, r_num](wxCommandEvent& event) {OnShowRound(event, r_num); });
+
+        buttonSizer->Add(roundButton, 0, wxALL, 10);
+        r_num++;
+    }
 
     // Panel z treœci¹ (prawa czêœæ, która siê zmienia)
     contentPanel = new wxPanel(this);
@@ -129,4 +141,9 @@ void TournamentWindow::OnShowResults(wxCommandEvent& event){
     contentSizer->Add(resultsPanel, 1, wxEXPAND);
     contentPanel->SetSizer(contentSizer);
     contentPanel->Layout();
+}
+
+void TournamentWindow::OnShowRound(wxCommandEvent& event, int roundNumber) {
+    // Tu mo¿na dodaæ kod do pokazania szczegó³ów dla danej rundy
+    wxMessageBox("Pokazujê szczegó³y dla rundy: " + std::to_string(roundNumber));
 }

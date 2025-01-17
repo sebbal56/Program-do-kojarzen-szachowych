@@ -7,6 +7,8 @@ Tournament::Tournament(std::string name, Date date, std::string place, std::stri
 	tournamentPlace = place;
 	tournamentAbout = about;
 	std::vector<Player> listOfPlayers = {};
+	rounds = {};
+	rounds.push_back(Round());
 }
 
 std::string Tournament::getName() {

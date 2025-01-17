@@ -3,6 +3,7 @@
 #include "Date.h"
 #include "Player.h"
 #include <algorithm>
+#include "Round.h"
 
 class Tournament
 {
@@ -11,9 +12,12 @@ class Tournament
 	std::string tournamentArbiter;
 	std::string tournamentPlace;
 	std::string tournamentAbout;
+	bool tournamentStarted; // zmienna maj¹ca za zadanie okrêliæ czy tueniej siê ju¿ zacz¹³ czy nie, Je¿eli siê zacz¹³, to nowododani zawodnicy 
+	//nie powinni aktualizowaæ listy startowej, tylko wskakiwaæ na jej koniec
 
 public:
 	std::vector<Player> listOfPlayers;
+	std::vector<Round> rounds;
 	Tournament(std::string name, Date date, std::string place, std::string arbiter, std::string about);
 	Tournament() = default;
 	std::string getName();

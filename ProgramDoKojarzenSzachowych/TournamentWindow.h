@@ -21,6 +21,7 @@ private:
     void OnShowStartingList(wxCommandEvent& event);
     void OnShowInfoPanel(wxCommandEvent& event);
     void OnShowResults(wxCommandEvent& event);
+    void OnShowRound(wxCommandEvent& event, int roundNumber);
     wxPanel* contentPanel;
     Tournament* tournament;
     wxStaticText* mainLabel;

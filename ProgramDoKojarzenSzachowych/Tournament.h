@@ -3,7 +3,9 @@
 #include "Date.h"
 #include "Player.h"
 #include <algorithm>
-#include "Round.h"
+//#include "Round.h"
+
+class Round;
 
 class Tournament
 {

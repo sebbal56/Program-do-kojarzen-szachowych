@@ -4,6 +4,8 @@
 #include <wx/listbox.h>
 #include "Tournament.h"
 
+class Round;
+
 class RoundPanel : public wxPanel
 {
 public:
@@ -27,5 +29,6 @@ private:
     wxButton* inputResultsButton;
     wxChoice* colorChoice;
     wxListBox* pairingsListBox;
+    wxString selectedColour;
 };
 

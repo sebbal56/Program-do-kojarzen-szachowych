@@ -79,6 +79,11 @@ std::string Player::playerToFile()
 	return surname + "," + name + "," + std::to_string(rating);
 }
 
+std::string Player::playerToPairings()
+{
+	return surname + ", " +name;
+}
+
 //std::ostream& operator<<(std::ostream& os, const Player& player) {
 //	os << player.surname << ", " << player.name;
 //	return os;

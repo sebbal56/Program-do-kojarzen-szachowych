@@ -1,5 +1,5 @@
 #include "TournamentWindow.h"
-
+#include "Round.h"
 
 TournamentWindow::TournamentWindow(wxWindow* parent, Tournament* t) : wxPanel(parent) {
     tournament = t;

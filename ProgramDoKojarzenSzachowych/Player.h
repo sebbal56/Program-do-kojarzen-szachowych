@@ -13,6 +13,7 @@ class Player
 public:
 	Player(std::string sn, std::string n, std::string club, Date bd, int rating);
 	Player(std::string line);
+	Player() = default;
 	int startingPosition;
 	int getRating() const;
 	std::string getSurname() const;
@@ -20,6 +21,7 @@ public:
 	const std::string playerInfo();
 	//friend std::ostream& operator<<(std::ostream& os, const Player& player);
 	std::string playerToFile();
+	std::string playerToPairings();
 
 	static int nextStartingNumber; 
 private:

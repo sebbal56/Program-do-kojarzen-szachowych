@@ -1,4 +1,5 @@
 #include "Tournament.h"
+#include "Round.h"
 
 Tournament::Tournament(std::string name, Date date, std::string place, std::string arbiter, std::string about) {
 	tournamentName = name;

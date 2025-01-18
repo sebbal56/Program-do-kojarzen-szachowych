@@ -1,7 +1,8 @@
 #include "RoundPanel.h"
+#include "Round.h"
 
 RoundPanel::RoundPanel(wxWindow* parent, Tournament* tournament, int rNumber)
-    : wxPanel(parent), tournament(tournament), r_num(rNumber), sizer(new wxBoxSizer(wxVERTICAL)){
+    : wxPanel(parent), tournament(tournament), sizer(new wxBoxSizer(wxVERTICAL)){
 
     r_num = rNumber - 1;
     if (!tournament->rounds[r_num].roundPaired) {
@@ -37,9 +38,14 @@ void RoundPanel::InitializeResultsView()
 {
     // Create a listbox to display pairings
     pairingsListBox = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxSize(300, 200));
-    for (int i = 0; i < 3; i++) {
-        pairingsListBox->Append("PARA: " + std::to_string(i) );
+    //for (int i = 0; i < 3; i++) {
+    //    pairingsListBox->Append("PARA: " + std::to_string(i) );
+    //}
+
+    for (auto& pair : tournament->rounds[r_num].pairings) {
+        pairingsListBox->Append(pair.display());
     }
+
 
     // Create a button to input results
     inputResultsButton = new wxButton(this, wxID_ANY, "WprowadŸ wyniki", wxDefaultPosition, wxDefaultSize);
@@ -54,10 +60,14 @@ void RoundPanel::InitializeResultsView()
 void RoundPanel::OnMakePairings(wxCommandEvent& event)
 {
     // Get the selected color
-    wxString selectedColor = colorChoice->GetStringSelection();
+    selectedColour = colorChoice->GetStringSelection();
 
     // Generate pairings (example logic, replace with actual logic)
     //tournament->rounds[r_num].GeneratePairings(selectedColor == "Bia³y");
+
+    if (r_num == 0) {
+        tournament->rounds[0].firstRoundPairings(tournament->listOfPlayers, selectedColour.ToStdString());
+    }
 
     // Clear existing layout
     sizer->Clear(true);

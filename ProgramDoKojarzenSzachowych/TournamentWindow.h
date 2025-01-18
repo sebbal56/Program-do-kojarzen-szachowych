@@ -11,6 +11,7 @@
 #include "StartingListPanel.h"
 #include "InfoPanel.h"
 #include "ResultsPanel.h"
+#include "RoundPanel.h"
 
 
 class TournamentWindow : public wxPanel {

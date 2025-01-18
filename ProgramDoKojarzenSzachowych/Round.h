@@ -5,8 +5,9 @@
 class Round
 {
 	std::vector<PairOfPlayers> pairings;
-	bool roundEnded;
 public:
 	Round();
+	bool roundPaired;
+	bool roundEnded;
 };
 

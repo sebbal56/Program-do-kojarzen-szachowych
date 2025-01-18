@@ -144,6 +144,11 @@ void TournamentWindow::OnShowResults(wxCommandEvent& event){
 }
 
 void TournamentWindow::OnShowRound(wxCommandEvent& event, int roundNumber) {
-    // Tu mo¿na dodaæ kod do pokazania szczegó³ów dla danej rundy
-    wxMessageBox("Pokazujê szczegó³y dla rundy: " + std::to_string(roundNumber));
+    contentPanel->DestroyChildren();
+
+    RoundPanel* roundPanel = new RoundPanel(contentPanel, tournament, roundNumber);
+    wxBoxSizer* contentSizer = new wxBoxSizer(wxVERTICAL);
+    contentSizer->Add(roundPanel, 1, wxEXPAND);
+    contentPanel->SetSizer(contentSizer);
+    contentPanel->Layout();
 }

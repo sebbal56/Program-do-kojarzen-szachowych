@@ -24,13 +24,15 @@ public:
 	std::string playerToPairings();
 
 	static int nextStartingNumber; 
+	double points;
+
 private:
 	std::string surname;
 	std::string name;
 	std::string club;
 	Date dateOfBirth;
 	int rating;
-	int points;
+
 	std::vector<std::pair<int, int>> playersPlayedWith; //z kim ju¿ gra³ i jaki wynik 
 
 };

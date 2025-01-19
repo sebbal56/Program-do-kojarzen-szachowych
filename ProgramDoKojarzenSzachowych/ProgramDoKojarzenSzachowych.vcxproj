@@ -142,6 +142,7 @@
     <ClCompile Include="PeopleBaseManager.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="ResultsInputPanel.cpp" />
     <ClCompile Include="ResultsPanel.cpp" />
     <ClCompile Include="Round.cpp" />
     <ClCompile Include="RoundPanel.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="PeopleBaseManager.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="ResultsInputPanel.h" />
     <ClInclude Include="ResultsPanel.h" />
     <ClInclude Include="Round.h" />
     <ClInclude Include="RoundPanel.h" />

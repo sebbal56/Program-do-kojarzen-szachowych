@@ -5,10 +5,8 @@ TournamentWindow::TournamentWindow(wxWindow* parent, Tournament* t) : wxPanel(pa
     tournament = t;
     SetLabel("TournamentWindowLabel");
 
-    // Tworzenie menu
     wxMenuBar* menuBar = new wxMenuBar();
 
-    // Menu "Plik"
     wxMenu* fileMenu = new wxMenu();
     fileMenu->Append(wxID_SAVE, "Zapisz turniej\tCtrl+S", "Zapisz dane turnieju");
     menuBar->Append(fileMenu, "Plik");
@@ -20,7 +18,7 @@ TournamentWindow::TournamentWindow(wxWindow* parent, Tournament* t) : wxPanel(pa
     }
 
     // Panel z przyciskami (po lewej stronie)
-    wxPanel* buttonPanel = new wxPanel(this);
+    buttonPanel = new wxPanel(this);
     wxBoxSizer* buttonSizer = new wxBoxSizer(wxVERTICAL);
 
     mainButton = new wxButton(buttonPanel, wxID_ANY, "Strona g³ówna", wxDefaultPosition, wxSize(160, 40));
@@ -63,7 +61,6 @@ TournamentWindow::TournamentWindow(wxWindow* parent, Tournament* t) : wxPanel(pa
     this->Layout();
 
 
-    // Zdarzenia
     Bind(wxEVT_BUTTON, &TournamentWindow::OnShowStartingList, this, startingListButton->GetId());
     Bind(wxEVT_BUTTON, &TournamentWindow::OnShowInfoPanel, this, mainButton->GetId());
     Bind(wxEVT_MENU, &TournamentWindow::OnSaveTournament, this, wxID_SAVE);
@@ -151,4 +148,37 @@ void TournamentWindow::OnShowRound(wxCommandEvent& event, int roundNumber) {
     contentSizer->Add(roundPanel, 1, wxEXPAND);
     contentPanel->SetSizer(contentSizer);
     contentPanel->Layout();
+}
+
+
+void TournamentWindow::RefreshRoundButtons() {
+    buttonPanel->DestroyChildren(); // Usuwamy istniej¹ce przyciski
+    wxBoxSizer* buttonSizer = new wxBoxSizer(wxVERTICAL);
+
+    // Dodajemy g³ówne przyciski
+    mainButton = new wxButton(buttonPanel, wxID_ANY, "Strona g³ówna", wxDefaultPosition, wxSize(160, 40));
+    startingListButton = new wxButton(buttonPanel, wxID_ANY, "Lista startowa", wxDefaultPosition, wxSize(160, 40));
+    resultsButton = new wxButton(buttonPanel, wxID_ANY, "Wyniki", wxDefaultPosition, wxSize(160, 40));
+
+    buttonSizer->Add(mainButton, 0, wxALL, 10);
+    buttonSizer->Add(startingListButton, 0, wxALL, 10);
+    buttonSizer->Add(resultsButton, 0, wxALL, 10);
+
+    Bind(wxEVT_BUTTON, &TournamentWindow::OnShowStartingList, this, startingListButton->GetId());
+    Bind(wxEVT_BUTTON, &TournamentWindow::OnShowInfoPanel, this, mainButton->GetId());
+    Bind(wxEVT_BUTTON, &TournamentWindow::OnShowResults, this, resultsButton->GetId());
+
+    // Dodajemy przyciski dla rund
+    int r_num = 1;
+    for (auto& round : tournament->rounds) {
+        wxButton* roundButton = new wxButton(buttonPanel, wxID_ANY, "Runda " + std::to_string(r_num), wxDefaultPosition, wxSize(160, 30));
+        roundButton->Bind(wxEVT_BUTTON, [this, r_num](wxCommandEvent& event) { OnShowRound(event, r_num); });
+
+        buttonSizer->Add(roundButton, 0, wxALL, 10);
+        r_num++;
+    }
+
+    buttonPanel->SetSizer(buttonSizer);
+    buttonPanel->Layout(); // Przeliczenie uk³adu
+    Layout(); // Odœwie¿enie ca³ego okna
 }

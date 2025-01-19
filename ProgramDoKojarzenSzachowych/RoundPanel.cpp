@@ -15,7 +15,6 @@ RoundPanel::RoundPanel(wxWindow* parent, Tournament* tournament, int rNumber)
 
 void RoundPanel::InitializePairingsView()
 {
-    // Create the "Make Pairings" button
     makePairingsButton = new wxButton(this, wxID_ANY, "Utwórz kojarzenia", wxDefaultPosition, wxDefaultSize);
 
     // Create the color choice dropdown
@@ -23,58 +22,71 @@ void RoundPanel::InitializePairingsView()
     colorOptions.Add("Bia³y");
     colorOptions.Add("Czarny");
     colorChoice = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, colorOptions);
-    colorChoice->SetSelection(0); // Default to "Bia³y"
+    colorChoice->SetSelection(0);
 
-    // Layout
     sizer->Add(makePairingsButton, 0, wxALL | wxALIGN_CENTER, 10);
     sizer->Add(colorChoice, 0, wxALL | wxALIGN_CENTER, 10);
     SetSizer(sizer);
 
-    // Bind event
     makePairingsButton->Bind(wxEVT_BUTTON, &RoundPanel::OnMakePairings, this);
 }
 
 void RoundPanel::InitializeResultsView()
 {
-    // Create a listbox to display pairings
-    pairingsListBox = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxSize(300, 200));
-    //for (int i = 0; i < 3; i++) {
-    //    pairingsListBox->Append("PARA: " + std::to_string(i) );
-    //}
+    pairingsListBox = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxSize(500, 450));
 
-    for (auto& pair : tournament->rounds[r_num].pairings) {
-        pairingsListBox->Append(pair.display());
+    if (tournament->rounds[r_num].roundEnded) {
+        for (auto& pair : tournament->rounds[r_num].pairings) {
+            pairingsListBox->Append(pair.displayResult());
+        }
+    }
+    else {
+        for (auto& pair : tournament->rounds[r_num].pairings) {
+            pairingsListBox->Append(pair.display());
+        }
     }
 
 
-    // Create a button to input results
-    inputResultsButton = new wxButton(this, wxID_ANY, "WprowadŸ wyniki", wxDefaultPosition, wxDefaultSize);
-
-    // Update layout
     sizer->Add(pairingsListBox, 1, wxEXPAND | wxALL, 10);
-    sizer->Add(inputResultsButton, 0, wxALL | wxALIGN_CENTER, 10);
-    SetSizer(sizer);
-    Layout();
+
+    if (!tournament->rounds[r_num].roundEnded) {
+        inputResultsButton = new wxButton(this, wxID_ANY, "WprowadŸ wyniki", wxDefaultPosition, wxDefaultSize);
+        sizer->Add(inputResultsButton, 0, wxALL | wxALIGN_CENTER, 10);
+        inputResultsButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {
+            SwitchToResultsInputPanel();
+            });
+        SetSizer(sizer);
+        Layout();
+
+
+    }
 }
 
 void RoundPanel::OnMakePairings(wxCommandEvent& event)
 {
-    // Get the selected color
     selectedColour = colorChoice->GetStringSelection();
 
-    // Generate pairings (example logic, replace with actual logic)
-    //tournament->rounds[r_num].GeneratePairings(selectedColor == "Bia³y");
 
     if (r_num == 0) {
         tournament->rounds[0].firstRoundPairings(tournament->listOfPlayers, selectedColour.ToStdString());
     }
 
-    // Clear existing layout
     sizer->Clear(true);
 
     // Initialize results view
     InitializeResultsView();
 
-    // Mark round as paired
     tournament->rounds[r_num].roundPaired = true;
+}
+
+
+void RoundPanel::SwitchToResultsInputPanel()
+{
+    sizer->Clear(true);
+
+    ResultsInputPanel* resultsInputPanel = new ResultsInputPanel(this, tournament, r_num + 1);
+    sizer->Add(resultsInputPanel, 1, wxEXPAND | wxALL, 10);
+
+    SetSizer(sizer);
+    Layout();
 }

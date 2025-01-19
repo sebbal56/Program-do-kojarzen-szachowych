@@ -3,6 +3,7 @@
 #include <wx/wx.h>
 #include <wx/listbox.h>
 #include "Tournament.h"
+#include "ResultsInputPanel.h"
 
 class Round;
 
@@ -16,6 +17,7 @@ public:
 private:
     // Event handler for making pairings
     void OnMakePairings(wxCommandEvent& event);
+    void SwitchToResultsInputPanel();
     void InitializePairingsView();
     void InitializeResultsView();
 

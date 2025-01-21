@@ -29,6 +29,8 @@ public:
 	Date getDate();
 	void addPlayerToList(Player p);
 	static bool comparePlayersByRating(const Player& p1, const Player& p2);
+	static bool comparePlayersByPoints(const Player& p1, const Player& p2);
 	void sortByRating(std::vector<Player>& startingList);
+	void sortByPoints(std::vector<Player>& startingList);
 };
 

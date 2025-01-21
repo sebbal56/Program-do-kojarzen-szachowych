@@ -49,6 +49,34 @@ void ResultsInputPanel::OnSaveResults(wxCommandEvent& event) {
     for (auto& choice : resultsChoices) {
         int selectedIndex = choice->GetSelection();
         tournament->rounds[r_num].pairings[i].setResult(selectedIndex);
+        int white = tournament->rounds[r_num].pairings[i].getWhitePlayer();
+        int black = tournament->rounds[r_num].pairings[i].getBlackPlayer();
+        for (int j = 0; j < tournament->listOfPlayers.size(); j++) {
+            if (tournament->listOfPlayers[j].startingPosition == white) {
+                switch (selectedIndex) {
+                    case(0): {
+                        tournament->listOfPlayers[j].points++;
+                        break;
+                    }
+                    case(1): {
+						tournament->listOfPlayers[j].points += 0.5;
+                        break;
+                    }
+                }
+            }
+            if (tournament->listOfPlayers[j].startingPosition == black) {
+                switch (selectedIndex) {
+                case(2): {
+                    tournament->listOfPlayers[j].points++;
+                    break;
+                }
+                case(1): {
+                    tournament->listOfPlayers[j].points += 0.5;
+                    break;
+                }
+                }
+            }
+        }
         i++;
     }
 

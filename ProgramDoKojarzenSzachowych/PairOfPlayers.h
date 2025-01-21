@@ -9,7 +9,9 @@ class PairOfPlayers
 public:
 	std::string display();
 	std::string displayResult();
-	PairOfPlayers(Player& p1, Player& p2);
+	PairOfPlayers(Player p1, Player p2);
 	void setResult(int result);
+	int getWhitePlayer();
+	int getBlackPlayer();
 };
 

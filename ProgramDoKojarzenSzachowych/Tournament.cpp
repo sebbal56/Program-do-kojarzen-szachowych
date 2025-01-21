@@ -78,7 +78,4 @@ void Tournament::sortByRating(std::vector<Player>& startingList){
 void Tournament::sortByPoints(std::vector<Player>& startingList)
 {
 	std::sort(startingList.begin(), startingList.end(), comparePlayersByPoints);
-	for (int i = 0; i < startingList.size(); i++) {
-		startingList[i].startingPosition = i + 1;
-	}
 }

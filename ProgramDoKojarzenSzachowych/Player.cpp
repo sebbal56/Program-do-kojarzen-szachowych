@@ -84,15 +84,19 @@ std::string Player::playerToPairings()
 	return surname + ", " +name;
 }
 
-std::string Player::playerToResults()
+std::string Player::playerToResults(int i)
 {
 	std::ostringstream stream;
 	const int posWidth = 4;         // Szerokoœæ dla numeru startowego
 	const int surnameWidth = 20;   // Szerokoœæ dla nazwiska
 	const int nameWidth = 15;      // Szerokoœæ dla imienia
 
+	//miejsce
+	stream << std::setw(posWidth) << std::left << (std::to_string(i) + ".");
+
 	// punkty
-	stream << std::setw(posWidth) << std::left << (std::to_string(points) + ".");
+	stream << std::fixed << std::setprecision(1);
+	stream << std::setw(posWidth) << std::left << points;
 
 	// Nazwisko (bez przecinka)
 	stream << std::setw(surnameWidth) << std::left << surname;

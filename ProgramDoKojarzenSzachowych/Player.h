@@ -22,7 +22,7 @@ public:
 	//friend std::ostream& operator<<(std::ostream& os, const Player& player);
 	std::string playerToFile();
 	std::string playerToPairings();
-	std::string playerToResults();
+	std::string playerToResults(int i);
 
 	static int nextStartingNumber; 
 	double points;

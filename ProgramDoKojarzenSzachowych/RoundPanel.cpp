@@ -68,6 +68,7 @@ void RoundPanel::OnMakePairings(wxCommandEvent& event)
 
 
     if (r_num == 0) {
+        tournament->sortByRating(tournament->listOfPlayers);
         tournament->rounds[0].firstRoundPairings(tournament->listOfPlayers, selectedColour.ToStdString());
     }
 

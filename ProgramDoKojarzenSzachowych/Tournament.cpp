@@ -68,6 +68,11 @@ bool Tournament::comparePlayersByPoints(const Player& p1, const Player& p2)
 	return p1.getName() < p2.getName();
 }
 
+bool Tournament::comparePlayersByStarting(const Player& p1, const Player& p2)
+{
+	return p1.startingPosition < p2.startingPosition;
+}
+
 void Tournament::sortByRating(std::vector<Player>& startingList){
 	std::sort(startingList.begin(), startingList.end(), comparePlayersByRating);
 	for (int i = 0; i < startingList.size(); i++) {
@@ -78,4 +83,9 @@ void Tournament::sortByRating(std::vector<Player>& startingList){
 void Tournament::sortByPoints(std::vector<Player>& startingList)
 {
 	std::sort(startingList.begin(), startingList.end(), comparePlayersByPoints);
+}
+
+void Tournament::sortByStarting(std::vector<Player>& startingList)
+{
+	std::sort(startingList.begin(), startingList.end(), comparePlayersByStarting);
 }

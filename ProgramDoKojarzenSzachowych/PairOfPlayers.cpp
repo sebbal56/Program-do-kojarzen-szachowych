@@ -14,6 +14,12 @@ PairOfPlayers::PairOfPlayers(Player p1, Player p2) : playerWhite(p1), playerBlac
 
 }
 
+PairOfPlayers::PairOfPlayers(Player p1) : playerWhite(p1)
+{
+    playerBlack = Player("Bye", 0);
+
+}
+
 void PairOfPlayers::setResult(int result){
     switch (result) {
         case(0): {

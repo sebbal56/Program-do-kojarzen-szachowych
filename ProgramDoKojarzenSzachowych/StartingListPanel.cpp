@@ -10,7 +10,7 @@ wxEND_EVENT_TABLE()
 
         // Dodaj komponenty listy startowej
         listBox = new wxListBox(this, wxID_ANY, wxPoint(20, 60), wxSize(200, 200));
-        tournament ->sortByRating(tournament->listOfPlayers);
+        tournament ->sortByStarting(tournament->listOfPlayers);
         for (auto& player : tournament->listOfPlayers) {
             listBox -> Append(player.playerInfo());
         }

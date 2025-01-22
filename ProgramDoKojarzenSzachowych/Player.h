@@ -13,6 +13,7 @@ class Player
 public:
 	Player(std::string sn, std::string n, std::string club, Date bd, int rating);
 	Player(std::string line);
+	Player(std::string pauza, int code);
 	Player() = default;
 	int startingPosition;
 	int getRating() const;

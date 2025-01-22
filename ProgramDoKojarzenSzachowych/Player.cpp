@@ -39,6 +39,12 @@ Player::Player(std::string line){
 	startingPosition = nextStartingNumber++;
 }
 
+Player::Player(std::string pauza, int code)
+{
+	surname = "BYE";
+	name = "PAUZA";
+}
+
 int Player::getRating() const{
 	return rating;
 }

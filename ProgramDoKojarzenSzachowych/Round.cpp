@@ -14,5 +14,6 @@ void Round::firstRoundPairings(std::vector<Player> listOfPlayers, std::string co
 		else pairings.push_back(PairOfPlayers(listOfPlayers[i + n], listOfPlayers[i]));
 		currColour = !currColour;
 	}
+	if(listOfPlayers.size() % 2 == 1) pairings.push_back(PairOfPlayers(listOfPlayers[listOfPlayers.size() - 1]));
 
 }

@@ -17,17 +17,21 @@ void RoundPanel::InitializePairingsView()
 {
     makePairingsButton = new wxButton(this, wxID_ANY, "Utwórz kojarzenia", wxDefaultPosition, wxDefaultSize);
 
-    // Create the color choice dropdown
-    wxArrayString colorOptions;
-    colorOptions.Add("Bia³y");
-    colorOptions.Add("Czarny");
-    colorChoice = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, colorOptions);
-    colorChoice->SetSelection(0);
-
     sizer->Add(makePairingsButton, 0, wxALL | wxALIGN_CENTER, 10);
-    sizer->Add(colorChoice, 0, wxALL | wxALIGN_CENTER, 10);
-    SetSizer(sizer);
 
+    // Jeœli r_num == 0, dodaj dropdown wyboru koloru
+    if (r_num == 0) {
+        wxArrayString colorOptions;
+        colorOptions.Add("Bia³y");
+        colorOptions.Add("Czarny");
+
+        colorChoice = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, colorOptions);
+        colorChoice->SetSelection(0);
+
+        sizer->Add(colorChoice, 0, wxALL | wxALIGN_CENTER, 10);
+    }
+
+    SetSizer(sizer);
     makePairingsButton->Bind(wxEVT_BUTTON, &RoundPanel::OnMakePairings, this);
 }
 
@@ -63,13 +67,15 @@ void RoundPanel::InitializeResultsView()
 }
 
 void RoundPanel::OnMakePairings(wxCommandEvent& event)
-{
-    selectedColour = colorChoice->GetStringSelection();
-
-
+{    
     if (r_num == 0) {
         tournament->sortByRating(tournament->listOfPlayers);
+        selectedColour = colorChoice->GetStringSelection();
         tournament->rounds[0].firstRoundPairings(tournament->listOfPlayers, selectedColour.ToStdString());
+    }
+    if (r_num == 1) {
+        tournament->sortByPoints(tournament->listOfPlayers);
+		//tournament->rounds[1].secoundRoundPairings(tournament->listOfPlayers);
     }
 
     sizer->Clear(true);

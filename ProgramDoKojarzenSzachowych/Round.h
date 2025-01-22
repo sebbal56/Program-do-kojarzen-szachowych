@@ -11,6 +11,7 @@ public:
 	bool roundPaired;
 	bool roundEnded;
 	void firstRoundPairings(std::vector<Player> listOfPlayers, std::string colour);
+	void secoundRoundPairings(std::vector<Player> listOfPlayers);
 	std::vector<PairOfPlayers> pairings;
 };
 

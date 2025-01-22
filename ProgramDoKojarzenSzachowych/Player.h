@@ -25,8 +25,11 @@ public:
 	std::string playerToPairings();
 	std::string playerToResults(int i);
 
+	void addAsPlayedWith(int i, double result);
+
 	static int nextStartingNumber; 
 	double points;
+	bool hasntPlayedWith(int i);
 
 private:
 	std::string surname;
@@ -35,7 +38,7 @@ private:
 	Date dateOfBirth;
 	int rating;
 
-	std::vector<std::pair<int, int>> playersPlayedWith; //z kim ju¿ gra³ i jaki wynik 
+	std::vector<std::pair<int, double>> playersPlayedWith; //z kim ju¿ gra³ i jaki wynik 
 
 };
 

@@ -56,24 +56,36 @@ void ResultsInputPanel::OnSaveResults(wxCommandEvent& event) {
                 switch (selectedIndex) {
                     case(0): {
                         tournament->listOfPlayers[j].points++;
+                        tournament->listOfPlayers[j].addAsPlayedWith(black, 1);
                         break;
                     }
                     case(1): {
 						tournament->listOfPlayers[j].points += 0.5;
+                        tournament->listOfPlayers[j].addAsPlayedWith(black, 0.5);
+                        break;
+                    }
+                    case(2): {
+                        tournament->listOfPlayers[j].addAsPlayedWith(black, 0);
                         break;
                     }
                 }
             }
             if (tournament->listOfPlayers[j].startingPosition == black) {
                 switch (selectedIndex) {
-                case(2): {
-                    tournament->listOfPlayers[j].points++;
-                    break;
-                }
-                case(1): {
-                    tournament->listOfPlayers[j].points += 0.5;
-                    break;
-                }
+                    case(2): {
+                        tournament->listOfPlayers[j].points++;
+                        tournament->listOfPlayers[j].addAsPlayedWith(white, 1);
+                        break;
+                    }
+                    case(1): {
+                        tournament->listOfPlayers[j].points += 0.5;
+                        tournament->listOfPlayers[j].addAsPlayedWith(white, 0.5);
+                        break;
+                    }
+                    case(0): {
+					    tournament->listOfPlayers[j].addAsPlayedWith(white, 0);
+					    break;
+				    }
                 }
             }
         }

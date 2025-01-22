@@ -116,6 +116,18 @@ std::string Player::playerToResults(int i)
 	return stream.str();
 }
 
+void Player::addAsPlayedWith(int i, double result){
+	playersPlayedWith.push_back(std::make_pair(i, result));
+}
+
+bool Player::hasntPlayedWith(int i)
+{
+	for(int i = 0; i < playersPlayedWith.size(); i++){
+		if(playersPlayedWith[i].first == i) return false;
+	}
+	return true;
+}
+
 //std::ostream& operator<<(std::ostream& os, const Player& player) {
 //	os << player.surname << ", " << player.name;
 //	return os;

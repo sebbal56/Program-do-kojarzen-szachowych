@@ -34,5 +34,7 @@ public:
 	void sortByRating(std::vector<Player>& startingList);
 	void sortByPoints(std::vector<Player>& startingList);
 	void sortByStarting(std::vector<Player>& startingList);
+
+	bool firstColour = false;
 };
 

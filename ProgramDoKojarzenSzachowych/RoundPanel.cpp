@@ -71,11 +71,16 @@ void RoundPanel::OnMakePairings(wxCommandEvent& event)
     if (r_num == 0) {
         tournament->sortByRating(tournament->listOfPlayers);
         selectedColour = colorChoice->GetStringSelection();
-        tournament->rounds[0].firstRoundPairings(tournament->listOfPlayers, selectedColour.ToStdString());
+        tournament->firstColour = selectedColour == "Bia³y";
+        selectedColour = colorChoice->GetStringSelection();
+        tournament->rounds[0].firstRoundPairings(tournament->listOfPlayers, tournament->firstColour);
+        tournament ->firstColour = !tournament->firstColour;
+        tournament->firstColour = !tournament->firstColour;
     }
     if (r_num == 1) {
         tournament->sortByPoints(tournament->listOfPlayers);
-		//tournament->rounds[1].secoundRoundPairings(tournament->listOfPlayers);
+		tournament->rounds[1].secoundRoundPairings(tournament->listOfPlayers, tournament->firstColour);
+        tournament->firstColour = !tournament->firstColour;
     }
 
     sizer->Clear(true);

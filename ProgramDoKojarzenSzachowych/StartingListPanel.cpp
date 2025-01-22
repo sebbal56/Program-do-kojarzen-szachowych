@@ -10,6 +10,10 @@ wxEND_EVENT_TABLE()
 
         // Dodaj komponenty listy startowej
         listBox = new wxListBox(this, wxID_ANY, wxPoint(20, 60), wxSize(200, 200));
+
+        wxFont font(wxFontInfo(8).Family(wxFONTFAMILY_TELETYPE)); // Rozmiar 8, czcionka monospaced
+        listBox->SetFont(font);
+
         tournament ->sortByStarting(tournament->listOfPlayers);
         for (auto& player : tournament->listOfPlayers) {
             listBox -> Append(player.playerInfo());

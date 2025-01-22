@@ -56,7 +56,7 @@ void Round::secoundRoundPairings(std::vector<Player> listOfPlayers, bool colour)
 						pairings.push_back(PairOfPlayers(temp[z], temp[j]));
 					colour = !colour;
 					temp.erase(temp.begin() + z);
-					temp.erase(temp.begin());
+					temp.erase(temp.begin() + j);
 					break;
 				}
 			}

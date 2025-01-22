@@ -39,6 +39,9 @@ void RoundPanel::InitializeResultsView()
 {
     pairingsListBox = new wxListBox(this, wxID_ANY, wxDefaultPosition, wxSize(500, 450));
 
+    wxFont font(wxFontInfo(8).Family(wxFONTFAMILY_TELETYPE)); // Rozmiar 8, czcionka monospaced
+    pairingsListBox->SetFont(font);
+
     if (tournament->rounds[r_num].roundEnded) {
         for (auto& pair : tournament->rounds[r_num].pairings) {
             pairingsListBox->Append(pair.displayResult());
@@ -74,7 +77,6 @@ void RoundPanel::OnMakePairings(wxCommandEvent& event)
         tournament->firstColour = selectedColour == "Bia³y";
         selectedColour = colorChoice->GetStringSelection();
         tournament->rounds[0].firstRoundPairings(tournament->listOfPlayers, tournament->firstColour);
-        tournament ->firstColour = !tournament->firstColour;
         tournament->firstColour = !tournament->firstColour;
     }
     if (r_num == 1) {

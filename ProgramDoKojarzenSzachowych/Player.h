@@ -30,6 +30,11 @@ public:
 	static int nextStartingNumber; 
 	double points;
 	bool hasntPlayedWith(int i);
+	std::vector<std::pair<int, double>> playersPlayedWith; //z kim ju¿ gra³ i jaki wynik 
+
+	static bool comparePlayersByStarting(const Player& p1, const Player& p2);
+	static void sortByStarting(std::vector<Player>& startingList);
+	int matchDifferenceScore;
 
 private:
 	std::string surname;
@@ -38,7 +43,7 @@ private:
 	Date dateOfBirth;
 	int rating;
 
-	std::vector<std::pair<int, double>> playersPlayedWith; //z kim ju¿ gra³ i jaki wynik 
+
 
 };
 

@@ -30,7 +30,6 @@ ResultsInputPanel::ResultsInputPanel(wxWindow* parent, Tournament* tournament, i
 
         sizer->Add(pairSizer, 0, wxEXPAND | wxALL, 5);
 
-        // Save dropdown for later processing
         resultsChoices.push_back(resultChoice);
     }
 

@@ -41,6 +41,7 @@ Player::Player(std::string line){
 
 Player::Player(std::string pauza, int code)
 {
+	startingPosition = -1;
 	surname = "BYE";
 	name = "PAUZA";
 }
@@ -120,10 +121,10 @@ void Player::addAsPlayedWith(int i, double result){
 	playersPlayedWith.push_back(std::make_pair(i, result));
 }
 
-bool Player::hasntPlayedWith(int i)
+bool Player::hasntPlayedWith(int n)
 {
 	for(int i = 0; i < playersPlayedWith.size(); i++){
-		if(playersPlayedWith[i].first == i) return false;
+		if(playersPlayedWith[i].first == n) return false;
 	}
 	return true;
 }
@@ -132,3 +133,13 @@ bool Player::hasntPlayedWith(int i)
 //	os << player.surname << ", " << player.name;
 //	return os;
 //}
+
+bool Player::comparePlayersByStarting(const Player& p1, const Player& p2)
+{
+	return p1.startingPosition < p2.startingPosition;
+}
+
+void Player::sortByStarting(std::vector<Player>& startingList)
+{
+	std::sort(startingList.begin(), startingList.end(), comparePlayersByStarting);
+}

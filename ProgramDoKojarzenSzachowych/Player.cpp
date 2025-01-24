@@ -116,20 +116,27 @@ std::string Player::playerToPairings()
 std::string Player::playerToResults(int i)
 {
 	std::ostringstream stream;
-	const int posWidth = 4;         // Szerokoœæ dla numeru startowego
-	const int surnameWidth = 20;   // Szerokoœæ dla nazwiska
-	const int nameWidth = 15;      // Szerokoœæ dla imienia
+	const int posWidth = 6; 
+	const int pointWidth = 10;       
+	const int buchWidth = 6;         
+	const int progWidth = 8;         
+	const int surnameWidth = 20; 
+	const int nameWidth = 15;    
 
 	//miejsce
 	stream << std::setw(posWidth) << std::left << (std::to_string(i) + ".");
 
 	// punkty
 	stream << std::fixed << std::setprecision(1);
-	stream << std::setw(posWidth) << std::left << points;
+	stream << std::setw(pointWidth) << std::left << points;
 
 	//buch
 	stream << std::fixed << std::setprecision(1);
-	stream << std::setw(posWidth) << std::left << buch;
+	stream << std::setw(buchWidth) << std::left << buch;
+
+	//prog
+	stream << std::fixed << std::setprecision(1);
+	stream << std::setw(progWidth) << std::left << prog;
 
 	// Nazwisko (bez przecinka)
 	stream << std::setw(surnameWidth) << std::left << surname;
@@ -177,4 +184,13 @@ void Player::setBuch(std::vector<Player>  listOfPlayers){
 double Player::getBuch() const
 {
 	return buch;
+}
+
+void Player::addProg(){
+	prog += points;
+}
+
+double Player::getProg() const
+{
+	return prog;
 }

@@ -91,6 +91,7 @@ void ResultsInputPanel::OnSaveResults(wxCommandEvent& event) {
     }
     for(auto& player : tournament->listOfPlayers){
 		player.setBuch(tournament->listOfPlayers);
+        player.addProg();
 	}
     wxMessageBox("Wyniki zosta³y zapisane!", "Sukces", wxOK | wxICON_INFORMATION);
     tournament->rounds[r_num].roundEnded = true;

@@ -37,6 +37,9 @@ public:
 	void setBuch(std::vector<Player> listOfPlayers);
 	double getBuch() const;
 
+	void addProg();
+	double getProg() const;
+
 private:
 	std::string surname;
 	std::string name;
@@ -44,5 +47,6 @@ private:
 	Date dateOfBirth;
 	int rating;
 	double buch;
+	double prog = 0;
 };
 

@@ -8,7 +8,6 @@ wxEND_EVENT_TABLE()
     StartingListPanel::StartingListPanel(wxWindow* parent, Tournament* t) : wxPanel(parent) {
     tournament = t;
 
-        // Dodaj komponenty listy startowej
         listBox = new wxListBox(this, wxID_ANY, wxPoint(20, 60), wxSize(200, 200));
 
         wxFont font(wxFontInfo(8).Family(wxFONTFAMILY_TELETYPE)); // Rozmiar 8, czcionka monospaced
@@ -18,10 +17,7 @@ wxEND_EVENT_TABLE()
         for (auto& player : tournament->listOfPlayers) {
             listBox -> Append(player.playerInfo());
         }
-        //TO DO
-        //if(tournament->listOfPlayers.size() > 0)listBox->Append(tournament->listOfPlayers[0].playerInfo());
 
-        //przycisk dodawania nowego zawodnika
         newPlayerButton = new wxButton(this, wxID_ANY, "Dodaj nowego zawodnika", wxDefaultPosition, wxSize(160, 40));
 
         wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
@@ -32,9 +28,8 @@ wxEND_EVENT_TABLE()
     }
 
 void StartingListPanel::OnAddPlayer(wxCommandEvent& event) {
-    wxWindow* parent = GetParent(); // Pobierz rodzica (g³ówne okno)
+    wxWindow* parent = GetParent();
     if (parent) {
-        //parent->DestroyChildren(); // Usuñ bie¿¹ce komponenty
         this->Hide();
         AddPlayerPanel* addPlayerPanel = new AddPlayerPanel(parent, tournament);
         wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);

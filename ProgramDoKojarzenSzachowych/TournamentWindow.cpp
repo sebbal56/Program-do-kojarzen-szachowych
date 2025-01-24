@@ -147,10 +147,9 @@ void TournamentWindow::OnShowRound(wxCommandEvent& event, int roundNumber) {
 
 
 void TournamentWindow::RefreshRoundButtons() {
-    buttonPanel->DestroyChildren(); // Usuwamy istniej¹ce przyciski
+    buttonPanel->DestroyChildren();
     wxBoxSizer* buttonSizer = new wxBoxSizer(wxVERTICAL);
 
-    // Dodajemy g³ówne przyciski
     mainButton = new wxButton(buttonPanel, wxID_ANY, "Strona g³ówna", wxDefaultPosition, wxSize(160, 40));
     startingListButton = new wxButton(buttonPanel, wxID_ANY, "Lista startowa", wxDefaultPosition, wxSize(160, 40));
     resultsButton = new wxButton(buttonPanel, wxID_ANY, "Wyniki", wxDefaultPosition, wxSize(160, 40));

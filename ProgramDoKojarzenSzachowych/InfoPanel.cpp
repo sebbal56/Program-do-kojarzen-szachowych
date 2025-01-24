@@ -34,36 +34,31 @@ InfoPanel::InfoPanel(wxWindow* parent, Tournament* tournament)
     aboutLabel->SetFont(font);
     aboutLabel2->SetFont(font2);
 
-    // Uk³ad elementów w pionie
     wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
     sizer->Add(mainLabel, 0, wxALIGN_CENTER_HORIZONTAL | wxTOP, 20);
     sizer->Add(tournamentLabel, 0, wxALIGN_CENTER_HORIZONTAL | wxTOP, 30);
     
-    // Dodanie poziomego sizer-a dla placeLabel i placeLabel2
     wxBoxSizer* placeSizer = new wxBoxSizer(wxHORIZONTAL);
-    placeSizer->Add(placeLabel, 0, wxALIGN_LEFT | wxRIGHT, 30); // Margines z prawej strony
-    placeSizer->Add(placeLabel2, 1, wxEXPAND); // Rozci¹gniêcie na resztê linii
+    placeSizer->Add(placeLabel, 0, wxALIGN_LEFT | wxRIGHT, 30);
+    placeSizer->Add(placeLabel2, 1, wxEXPAND);
 
-    sizer->Add(placeSizer, 0, wxEXPAND | wxTOP, 20); // Dodanie poziomego sizer-a
+    sizer->Add(placeSizer, 0, wxEXPAND | wxTOP, 20);
 
     wxBoxSizer* dateSizer = new wxBoxSizer(wxHORIZONTAL);
-    dateSizer->Add(dateLabel, 0, wxALIGN_LEFT | wxRIGHT, 110); // Margines z prawej strony
-    dateSizer->Add(dateLabel2, 1, wxEXPAND); // Rozci¹gniêcie na resztê linii
+    dateSizer->Add(dateLabel, 0, wxALIGN_LEFT | wxRIGHT, 110);
+    dateSizer->Add(dateLabel2, 1, wxEXPAND);
 
-    sizer->Add(dateSizer, 0, wxEXPAND | wxTOP, 20); // Dodanie poziomego sizer-a
+    sizer->Add(dateSizer, 0, wxEXPAND | wxTOP, 20);
 
 
-    //sizer->Add(dateLabel, 0, wxALIGN_LEFT | wxTOP, 10);
-    //sizer->Add(dateLabel2, 0, wxALIGN_LEFT | wxTOP, 10);
 
     wxBoxSizer* arbiterSizer = new wxBoxSizer(wxHORIZONTAL);
-    arbiterSizer->Add(arbiterLabel, 0, wxALIGN_LEFT | wxRIGHT, 90); // Margines z prawej strony
-    arbiterSizer->Add(arbiterLabel2, 1, wxEXPAND); // Rozci¹gniêcie na resztê linii
+    arbiterSizer->Add(arbiterLabel, 0, wxALIGN_LEFT | wxRIGHT, 90);
+    arbiterSizer->Add(arbiterLabel2, 1, wxEXPAND);
 
-    sizer->Add(arbiterSizer, 0, wxEXPAND | wxTOP, 20); // Dodanie poziomego sizer-a
+    sizer->Add(arbiterSizer, 0, wxEXPAND | wxTOP, 20);
 
-    //sizer->Add(arbiterLabel, 0, wxALIGN_LEFT | wxTOP, 10);
-    //sizer->Add(arbiterLabel2, 0, wxALIGN_LEFT | wxTOP, 10);
+
     sizer->Add(aboutLabel, 0, wxALIGN_LEFT | wxTOP, 10);
     sizer->Add(aboutLabel2, 1, wxEXPAND | wxTOP, 10);
 

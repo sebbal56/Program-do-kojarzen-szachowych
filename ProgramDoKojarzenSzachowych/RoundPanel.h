@@ -14,17 +14,13 @@ public:
     int r_num;
 
 private:
-    // Event handler for making pairings
     void OnMakePairings(wxCommandEvent& event);
     void SwitchToResultsInputPanel();
     void InitializePairingsView();
     void InitializeResultsView();
 
-
-    // Pointer to the tournament object
     Tournament* tournament;
 
-    // UI elements
     wxBoxSizer* sizer;
     wxButton* makePairingsButton;
     wxButton* inputResultsButton;

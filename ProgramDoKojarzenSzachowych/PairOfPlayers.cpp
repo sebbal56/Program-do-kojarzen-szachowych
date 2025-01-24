@@ -4,7 +4,6 @@ std::string PairOfPlayers::display()
 {
     std::ostringstream stream;
 
-    // Szerokoœæ pola dla nazwiska ka¿dego gracza
     const int width = 30;
 
     stream << std::setw(width) << std::left << playerWhite.playerToPairings();

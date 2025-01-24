@@ -1,7 +1,6 @@
 #include "TournamentCreator.h"
 
 wxBEGIN_EVENT_TABLE(TournamentCreator, wxPanel)
-//EVT_BUTTON(wxID_SAVE, TournamentCreator::OnSaveTournament)
 EVT_BUTTON(wxID_SAVE, TournamentCreator::OnNext)
 EVT_BUTTON(wxID_CANCEL, TournamentCreator::OnCancel)
 wxEND_EVENT_TABLE()
@@ -58,7 +57,6 @@ void TournamentCreator::OnCancel(wxCommandEvent& event) {
 void TournamentCreator::OnNext(wxCommandEvent& event) {
     long day, month, year;
 
-    // Konwersja pól na liczby
     if (!dayField->GetValue().ToLong(&day)) {
         wxLogError("B³¹d: Nieprawid³owy format dnia.");
         return;
@@ -80,7 +78,6 @@ void TournamentCreator::OnNext(wxCommandEvent& event) {
     wxString tournamentArbiter = arbiterField->GetValue();
     wxString tournamentAbout = aboutField->GetValue();
 
-    // Ukrywamy obecny panel
     this->Hide();
 
     wxWindow* parent = this->GetParent();

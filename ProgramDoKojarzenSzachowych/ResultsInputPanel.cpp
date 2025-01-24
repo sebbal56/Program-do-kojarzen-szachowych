@@ -6,10 +6,9 @@
 
 ResultsInputPanel::ResultsInputPanel(wxWindow* parent, Tournament* tournament, int rNumber)
     : wxPanel(parent), tournament(tournament), sizer(new wxBoxSizer(wxVERTICAL)) {
-
+    
     r_num = rNumber - 1;
 
-    // Create title
     wxStaticText* title = new wxStaticText(this, wxID_ANY, "WprowadŸ wyniki dla rundy " + std::to_string(rNumber));
     sizer->Add(title, 0, wxALL | wxALIGN_CENTER, 10);
 

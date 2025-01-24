@@ -13,7 +13,6 @@ public:
 private:
 
     wxListBox* listBox;
-    //wxButton* newPlayerButton;
     Tournament* tournament;
 
 };

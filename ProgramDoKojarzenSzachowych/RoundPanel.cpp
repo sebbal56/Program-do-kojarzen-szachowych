@@ -71,6 +71,7 @@ void RoundPanel::InitializeResultsView()
 void RoundPanel::OnMakePairings(wxCommandEvent& event)
 {    
     if (r_num == 0) {
+        tournament->tournamentStarted = true;
         tournament->sortByRating(tournament->listOfPlayers);
         selectedColour = colorChoice->GetStringSelection();
         tournament->firstColour = selectedColour == "Bia³y";

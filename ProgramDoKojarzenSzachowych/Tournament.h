@@ -14,8 +14,7 @@ class Tournament
 	std::string tournamentArbiter;
 	std::string tournamentPlace;
 	std::string tournamentAbout;
-	bool tournamentStarted; // zmienna maj¹ca za zadanie okrêliæ czy tueniej siê ju¿ zacz¹³ czy nie, Je¿eli siê zacz¹³, to nowododani zawodnicy 
-	//nie powinni aktualizowaæ listy startowej, tylko wskakiwaæ na jej koniec
+	
 
 public:
 	std::vector<Player> listOfPlayers;
@@ -36,5 +35,8 @@ public:
 	void sortByStarting(std::vector<Player>& startingList);
 
 	bool firstColour = false;
+
+	bool tournamentStarted = false; // zmienna maj¹ca za zadanie okrêliæ czy tueniej siê ju¿ zacz¹³ czy nie, Je¿eli siê zacz¹³, to nowododani zawodnicy 
+	//nie powinni aktualizowaæ listy startowej, tylko wskakiwaæ na jej koniec
 };
 

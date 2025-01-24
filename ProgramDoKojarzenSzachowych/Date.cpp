@@ -31,6 +31,20 @@ Date::Date(wxString d, wxString m, wxString y) {
 	year = std::stoi(y.ToStdString());
 }
 
+Date::Date(std::string line){
+	size_t start = 0, end = 0;
+
+	end = line.find('-', start);
+	day = std::stoi(line.substr(start, end - start));
+	start = end + 1;
+
+	end = line.find('-', start);
+	month = std::stoi(line.substr(start, end - start));
+	start = end + 1;
+
+	year = std::stoi(line.substr(start));
+}
+
 int Date::getDay() {
 	return day;
 }

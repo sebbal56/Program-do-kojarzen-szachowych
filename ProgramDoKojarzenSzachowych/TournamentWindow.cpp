@@ -68,8 +68,6 @@ TournamentWindow::TournamentWindow(wxWindow* parent, Tournament* t) : wxPanel(pa
 
 
 void TournamentWindow::OnSaveTournament(wxCommandEvent& event) {
-    wxLogMessage("Wywo³ano funkcjê zapisu turnieju.");
-
     wxFileDialog saveFileDialog(this, _("Zapisz dane turnieju"), "", "tournament_data.txt",
         "Pliki tekstowe (*.txt)|*.txt", wxFD_SAVE | wxFD_OVERWRITE_PROMPT
     );

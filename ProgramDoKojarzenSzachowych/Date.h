@@ -12,6 +12,7 @@ public:
 	int compare(const Date& pattern) const;
 	Date(int d, int m, int y);
 	Date(wxString d, wxString m, wxString y);
+	Date(std::string line);
 	Date() = default;
 	int getDay();
 	int getMonth();

@@ -20,7 +20,6 @@ public:
 	std::string getSurname() const;
 	std::string getName() const;
 	const std::string playerInfo();
-	//friend std::ostream& operator<<(std::ostream& os, const Player& player);
 	std::string playerToFile();
 	std::string playerToPairings();
 	std::string playerToResults(int i);
@@ -35,6 +34,8 @@ public:
 	static bool comparePlayersByStarting(const Player& p1, const Player& p2);
 	static void sortByStarting(std::vector<Player>& startingList);
 	int matchDifferenceScore;
+	void setBuch(std::vector<Player> listOfPlayers);
+	double getBuch() const;
 
 private:
 	std::string surname;
@@ -42,8 +43,6 @@ private:
 	std::string club;
 	Date dateOfBirth;
 	int rating;
-
-
-
+	double buch;
 };
 

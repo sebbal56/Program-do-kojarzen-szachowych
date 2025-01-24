@@ -7,13 +7,10 @@ std::string PairOfPlayers::display()
     // Szerokoœæ pola dla nazwiska ka¿dego gracza
     const int width = 30;
 
-    // Wyœwietlenie bia³ego gracza z ustalon¹ szerokoœci¹
     stream << std::setw(width) << std::left << playerWhite.playerToPairings();
 
-    // Separator miêdzy graczami
     stream << " - ";
 
-    // Wyœwietlenie czarnego gracza z ustalon¹ szerokoœci¹
     stream << std::setw(width) << std::right << playerBlack.playerToPairings();
 
     return stream.str();

@@ -36,7 +36,6 @@ ResultsInputPanel::ResultsInputPanel(wxWindow* parent, Tournament* tournament, i
     wxButton* saveResultsButton = new wxButton(this, wxID_ANY, "Zapisz wyniki");
     sizer->Add(saveResultsButton, 0, wxALL | wxALIGN_CENTER, 10);
 
-    // Bind event
     saveResultsButton->Bind(wxEVT_BUTTON, &ResultsInputPanel::OnSaveResults, this);
 
     SetSizer(sizer);
@@ -90,7 +89,9 @@ void ResultsInputPanel::OnSaveResults(wxCommandEvent& event) {
         }
         i++;
     }
-
+    for(auto& player : tournament->listOfPlayers){
+		player.setBuch(tournament->listOfPlayers);
+	}
     wxMessageBox("Wyniki zosta³y zapisane!", "Sukces", wxOK | wxICON_INFORMATION);
     tournament->rounds[r_num].roundEnded = true;
 
@@ -103,12 +104,11 @@ void ResultsInputPanel::OnSaveResults(wxCommandEvent& event) {
             tournamentWindow->RefreshRoundButtons();
             break;
         }
-        parent = parent->GetParent(); // Przejœcie w górê hierarchii
+        parent = parent->GetParent();
     }
 
     sizer->Clear(true);
 
-    // Create and display ResultsInputPanel
     RoundPanel* roundPanel = new RoundPanel(this, tournament, r_num + 1);
     sizer->Add(roundPanel, 1, wxEXPAND | wxALL, 10);
 

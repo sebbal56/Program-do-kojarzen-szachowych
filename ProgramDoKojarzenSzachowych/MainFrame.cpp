@@ -86,8 +86,8 @@ void MainFrame::OnLoadTournament(wxCommandEvent& event) {
             break;
         }
         tournament->listOfPlayers.push_back(Player(line.ToStdString()));
-        tournament->sortByRating(tournament->listOfPlayers);
     }
+    Player::nextStartingNumber = tournament->listOfPlayers.size() + 1;
 
 
     file.Close();

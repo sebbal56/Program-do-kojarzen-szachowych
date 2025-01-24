@@ -137,7 +137,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainFrame.cpp" />
     <ClCompile Include="PairOfPlayers.cpp" />
-    <ClCompile Include="Person.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="ResultsInputPanel.cpp" />
     <ClCompile Include="ResultsPanel.cpp" />
@@ -154,7 +153,6 @@
     <ClInclude Include="InfoPanel.h" />
     <ClInclude Include="MainFrame.h" />
     <ClInclude Include="PairOfPlayers.h" />
-    <ClInclude Include="Person.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="ResultsInputPanel.h" />
     <ClInclude Include="ResultsPanel.h" />

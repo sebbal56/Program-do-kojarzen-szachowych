@@ -62,6 +62,9 @@ bool Tournament::comparePlayersByPoints(const Player& p1, const Player& p2)
 	if (p1.points != p2.points) {
 		return p1.points > p2.points;
 	}
+	if (p1.getBuch() != p2.getBuch()) {
+		return p1.getBuch() > p2.getBuch();
+	}
 	if (p1.getSurname() != p2.getSurname()) {
 		return p1.getSurname() < p2.getSurname();
 	}

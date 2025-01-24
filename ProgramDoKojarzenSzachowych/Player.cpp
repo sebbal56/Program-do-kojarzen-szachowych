@@ -138,10 +138,10 @@ std::string Player::playerToResults(int i)
 	stream << std::fixed << std::setprecision(1);
 	stream << std::setw(progWidth) << std::left << prog;
 
-	// Nazwisko (bez przecinka)
+	// Nazwisko
 	stream << std::setw(surnameWidth) << std::left << surname;
 
-	// Imiê (zaraz za nazwiskiem, wyrównane)
+	// Imiê
 	stream << std::setw(nameWidth) << std::left << name;
 
 	// Ocena

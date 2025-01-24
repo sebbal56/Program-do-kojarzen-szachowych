@@ -8,6 +8,7 @@ class PairOfPlayers
 	std::string gameResult;
 public:
 	std::string display();
+	std::string displayToInput();
 	std::string displayResult();
 	PairOfPlayers(Player p1, Player p2);
 	PairOfPlayers(Player p1);

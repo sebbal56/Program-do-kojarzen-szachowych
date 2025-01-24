@@ -10,12 +10,20 @@ ResultsInputPanel::ResultsInputPanel(wxWindow* parent, Tournament* tournament, i
     r_num = rNumber - 1;
 
     wxStaticText* title = new wxStaticText(this, wxID_ANY, "WprowadŸ wyniki dla rundy " + std::to_string(rNumber));
+    wxFont font = title->GetFont();
+
+    font.SetPointSize(font.GetPointSize() + 4);
+    font.SetWeight(wxFONTWEIGHT_BOLD);         
+
+    title->SetFont(font);
     sizer->Add(title, 0, wxALL | wxALIGN_CENTER, 10);
 
     for (auto& pair : tournament->rounds[r_num].pairings) {
         wxBoxSizer* pairSizer = new wxBoxSizer(wxHORIZONTAL);
 
-        wxStaticText* pairLabel = new wxStaticText(this, wxID_ANY, pair.display());
+        wxStaticText* pairLabel = new wxStaticText(this, wxID_ANY, pair.displayToInput());
+        wxFont font(wxFontInfo(9).Family(wxFONTFAMILY_TELETYPE)); // Rozmiar 8, czcionka monospaced
+        pairLabel->SetFont(font);
         pairSizer->Add(pairLabel, 1, wxALL | wxALIGN_CENTER_VERTICAL, 5);
 
         wxArrayString resultOptions;

@@ -9,80 +9,74 @@ AddPlayerPanel::AddPlayerPanel(wxWindow* parent, Tournament* t) : wxPanel(parent
 
     tournament = t;
 
-    wxStaticText* mainLabel = new wxStaticText(this, wxID_ANY, "Dodawanie nowego zawodnika", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
-    wxStaticText* surnameLabel = new wxStaticText(this, wxID_ANY, "Nazwisko", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
-    wxStaticText* nameLabel = new wxStaticText(this, wxID_ANY, "Imiê", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
-    wxStaticText* clubLabel = new wxStaticText(this, wxID_ANY, "Klub / Miejscowoœæ", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
-    wxStaticText* ratingLabel = new wxStaticText(this, wxID_ANY, "Ranking", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
-    wxStaticText* birthdayLabel = new wxStaticText(this, wxID_ANY, "Data urodzenia", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
-    wxStaticText* dayLabel = new wxStaticText(this, wxID_ANY, "Dzieñ", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
-    wxStaticText* monthLabel = new wxStaticText(this, wxID_ANY, "Miesi¹c", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
-    wxStaticText* yearLabel = new wxStaticText(this, wxID_ANY, "Rok", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER_HORIZONTAL);
+    // Czcionki
+    wxFont mainFont(16, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
+    wxFont labelFont(14, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
+    wxFont inputFont(14, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
+
+    wxStaticText* mainLabel = new wxStaticText(this, wxID_ANY, "Dodawanie nowego zawodnika");
+    wxStaticText* surnameLabel = new wxStaticText(this, wxID_ANY, "Nazwisko:");
+    wxStaticText* nameLabel = new wxStaticText(this, wxID_ANY, "Imiê:");
+    wxStaticText* clubLabel = new wxStaticText(this, wxID_ANY, "Klub / Miejscowoœæ:");
+    wxStaticText* ratingLabel = new wxStaticText(this, wxID_ANY, "Ranking:");
+    wxStaticText* birthdayLabel = new wxStaticText(this, wxID_ANY, "Data urodzenia:");
 
     surnameInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(200, 30));
+    surnameInput->SetFont(inputFont);
     nameInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(200, 30));
+    nameInput->SetFont(inputFont);
     clubInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(200, 30));
+    clubInput->SetFont(inputFont);
     ratingInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(200, 30));
-    dayInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(30, 30));
-    monthInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(30, 30));
-    yearInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(50, 30));
-
+    ratingInput->SetFont(inputFont);
+    dayInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(40, 30));
+    dayInput->SetFont(inputFont);
+    monthInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(40, 30));
+    monthInput->SetFont(inputFont);
+    yearInput = new wxTextCtrl(this, wxID_ANY, "", wxDefaultPosition, wxSize(60, 30));
+    yearInput->SetFont(inputFont);
 
     saveButton = new wxButton(this, wxID_ANY, "Zapisz", wxDefaultPosition, wxSize(100, 30));
     saveButton->Bind(wxEVT_BUTTON, &AddPlayerPanel::OnSaveButtonClicked, this);
 
-    wxFont font(14, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
-    wxFont font2(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
-    wxFont font3(10, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
-    mainLabel->SetFont(font);
-    surnameLabel->SetFont(font2);
-    nameLabel->SetFont(font2);
-    clubLabel->SetFont(font2);
-    ratingLabel->SetFont(font2);
-    birthdayLabel->SetFont(font2);
-    dayLabel->SetFont(font3);
-    monthLabel->SetFont(font3);
-    yearLabel->SetFont(font3);
 
-    wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
-    sizer->Add(mainLabel, 0, wxALIGN_CENTER | wxTOP | wxBottom, 20);
+    mainLabel->SetFont(mainFont);
+    surnameLabel->SetFont(labelFont);
+    nameLabel->SetFont(labelFont);
+    clubLabel->SetFont(labelFont);
+    ratingLabel->SetFont(labelFont);
+    birthdayLabel->SetFont(labelFont);
 
-    wxBoxSizer* surnameSizer = new wxBoxSizer(wxHORIZONTAL);
-    surnameSizer->Add(surnameLabel, 0, wxALIGN_CENTER | wxRIGHT, 40);
-    surnameSizer->Add(surnameInput, 1, wxALIGN_CENTER);
-    sizer->Add(surnameSizer, 0, wxALIGN_CENTER | wxTOP | wxBOTTOM, 20);
+    // Sizer g³ówny
+    wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
+    mainSizer->Add(mainLabel, 0, wxALIGN_CENTER | wxTOP | wxBOTTOM, 20);
 
-    wxBoxSizer* nameSizer = new wxBoxSizer(wxHORIZONTAL);
-    nameSizer->Add(nameLabel, 0, wxALIGN_CENTER | wxRIGHT, 70);
-    nameSizer->Add(nameInput, 1, wxALIGN_CENTER);
-    sizer->Add(nameSizer, 0, wxALIGN_CENTER | wxTOP | wxBOTTOM, 20);
+    // Sizer z siatk¹
+    wxFlexGridSizer* gridSizer = new wxFlexGridSizer(2, 10, 10);
+    gridSizer->Add(surnameLabel, 0, wxALIGN_RIGHT | wxALIGN_CENTER_VERTICAL);
+    gridSizer->Add(surnameInput, 1, wxEXPAND);
+    gridSizer->Add(nameLabel, 0, wxALIGN_RIGHT | wxALIGN_CENTER_VERTICAL);
+    gridSizer->Add(nameInput, 1, wxEXPAND);
+    gridSizer->Add(clubLabel, 0, wxALIGN_RIGHT | wxALIGN_CENTER_VERTICAL);
+    gridSizer->Add(clubInput, 1, wxEXPAND);
+    gridSizer->Add(ratingLabel, 0, wxALIGN_RIGHT | wxALIGN_CENTER_VERTICAL);
+    gridSizer->Add(ratingInput, 1, wxEXPAND);
+    gridSizer->Add(birthdayLabel, 0, wxALIGN_RIGHT | wxALIGN_CENTER_VERTICAL);
 
-    wxBoxSizer* clubSizer = new wxBoxSizer(wxHORIZONTAL);
-    clubSizer->Add(clubLabel, 0, wxALIGN_CENTER | wxRIGHT, 30);
-    clubSizer->Add(clubInput, 1, wxALIGN_CENTER);
-    sizer->Add(clubSizer, 0, wxALIGN_CENTER | wxTOP | wxBOTTOM, 20);
+    // Sizer dla daty
+    wxBoxSizer* dateSizer = new wxBoxSizer(wxHORIZONTAL);
+    dateSizer->Add(dayInput, 0, wxRIGHT, 5);
+    dateSizer->Add(new wxStaticText(this, wxID_ANY, "-"), 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, 5);
+    dateSizer->Add(monthInput, 0, wxRIGHT, 5);
+    dateSizer->Add(new wxStaticText(this, wxID_ANY, "-"), 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, 5);
+    dateSizer->Add(yearInput, 0);
+    gridSizer->Add(dateSizer, 1, wxEXPAND);
 
-    wxBoxSizer* ratingSizer = new wxBoxSizer(wxHORIZONTAL);
-    ratingSizer->Add(ratingLabel, 0, wxALIGN_CENTER | wxRIGHT, 70);
-    ratingSizer->Add(ratingInput, 0, 1, wxALIGN_CENTER);
-    sizer->Add(ratingSizer, 0, wxALIGN_CENTER | wxTOP | wxBOTTOM, 20);
+    mainSizer->Add(gridSizer, 1, wxALL | wxEXPAND, 20);
 
+    mainSizer->Add(saveButton, 0, wxALIGN_CENTER | wxTOP, 20);
 
-    sizer->Add(birthdayLabel, 0, wxALIGN_CENTER | wxTOP, 20);
-
-    wxBoxSizer* bdSizer = new wxBoxSizer(wxHORIZONTAL);
-    bdSizer->Add(dayLabel, 0, wxALIGN_CENTER | wxRIGHT, 10);
-    bdSizer->Add(dayInput, 0, wxALIGN_CENTER | wxRIGHT, 30);
-    bdSizer->Add(monthLabel, 0, wxALIGN_CENTER | wxRIGHT, 10);
-    bdSizer->Add(monthInput, 0, wxALIGN_CENTER | wxRIGHT, 30);
-    bdSizer->Add(yearLabel, 0, wxALIGN_CENTER | wxRIGHT, 10);
-    bdSizer->Add(yearInput, 0, wxALIGN_CENTER | wxRIGHT, 30);
-    sizer->Add(bdSizer, 0, wxALIGN_CENTER | wxTOP, 10);
-
-
-    sizer->Add(saveButton, 0, wxALIGN_CENTER | wxTOP, 20);
-
-    SetSizer(sizer);
+    SetSizer(mainSizer);
 }
 
 

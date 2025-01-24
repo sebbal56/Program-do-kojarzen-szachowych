@@ -14,5 +14,7 @@ public:
 	void setResult(int result);
 	int getWhitePlayer();
 	int getBlackPlayer();
+	double getWhitePoints() const;
+	double getBlackPoints() const;
 };
 

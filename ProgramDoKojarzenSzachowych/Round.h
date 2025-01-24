@@ -15,7 +15,6 @@ public:
 	void secoundRoundPairings(std::vector<Player> listOfPlayers, bool colour);
 	void furtherRoundPairings(std::vector<Player> listOfPlayers, bool colour);
 	std::vector<PairOfPlayers> pairings;
-	std::vector<int> permutate(std::vector<int> startingPerm, std::vector<std::vector<int>> banned);
 
 	struct Match
 	{

@@ -38,5 +38,7 @@ public:
 
 	bool tournamentStarted = false; // zmienna maj¹ca za zadanie okrêliæ czy tueniej siê ju¿ zacz¹³ czy nie, Je¿eli siê zacz¹³, to nowododani zawodnicy 
 	//nie powinni aktualizowaæ listy startowej, tylko wskakiwaæ na jej koniec
+
+
 };
 

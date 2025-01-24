@@ -89,7 +89,6 @@ void RoundPanel::OnMakePairings(wxCommandEvent& event)
         tournament->rounds[r_num].furtherRoundPairings(tournament->listOfPlayers, tournament->firstColour);
         tournament->firstColour = !tournament->firstColour;
     }
-
     sizer->Clear(true);
 
     InitializeResultsView();

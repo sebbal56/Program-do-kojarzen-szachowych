@@ -10,7 +10,6 @@ class Round;
 class RoundPanel : public wxPanel
 {
 public:
-    // Constructor
     RoundPanel(wxWindow* parent, Tournament* tournament, int rNumber);
     int r_num;
 

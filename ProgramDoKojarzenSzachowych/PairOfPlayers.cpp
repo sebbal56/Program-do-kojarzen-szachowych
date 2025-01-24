@@ -72,3 +72,13 @@ int PairOfPlayers::getBlackPlayer()
 {
     return playerBlack.startingPosition;
 }
+
+double PairOfPlayers::getWhitePoints() const
+{
+    return playerWhite.points;
+}
+
+double PairOfPlayers::getBlackPoints() const
+{
+    return playerBlack.points;
+}

@@ -1,7 +1,7 @@
 #include "Round.h"
 
 Round::Round(){
-	roundPaired = false; //tymczasowo
+	roundPaired = false;
 	roundEnded = false;
 	pairings = {};
 }
@@ -80,7 +80,7 @@ void Round::secoundRoundPairings(std::vector<Player> listOfPlayers, bool colour)
 
 void Round::furtherRoundPairings(std::vector<Player> listOfPlayers, bool colour) {
 	std::vector<Match> matches;
-	std::vector<bool> used(listOfPlayers.size(), false); // Ograniczenie: jeden mecz na gracza
+	std::vector<bool> used(listOfPlayers.size(), false);
 
 
 	for (auto&& p1 : listOfPlayers) {
@@ -118,7 +118,6 @@ void Round::furtherRoundPairings(std::vector<Player> listOfPlayers, bool colour)
 			j++;
 		}
 
-		// Znajdü mecz dla targetPlayer o najmniejszym ScoreDifference
 		Match* bestMatch = nullptr;
 		int minScoreDifference = INT_MAX;
 		for (auto&& m : matches) {
@@ -133,7 +132,6 @@ void Round::furtherRoundPairings(std::vector<Player> listOfPlayers, bool colour)
 			}
 		}
 		pairings.push_back(PairOfPlayers(*bestMatch->a, *bestMatch->b));
-		//matches.erase(std::remove(matches.begin(), matches.end(), *bestMatch), matches.end());
 		for (int i = 0; i < listOfPlayers.size(); i++) {
 			if (&listOfPlayers[i] == bestMatch->a || &listOfPlayers[i] == bestMatch->b) {
 				used[i] = true;

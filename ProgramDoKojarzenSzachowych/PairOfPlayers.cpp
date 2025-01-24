@@ -21,8 +21,6 @@ std::string PairOfPlayers::display()
 
 std::string PairOfPlayers::displayResult()
 {
-    //return playerWhite.playerToPairings() + " " + gameResult + " " + playerBlack.playerToPairings();
-
     std::ostringstream stream;
 
     const int width = 30;
@@ -51,7 +49,6 @@ void PairOfPlayers::setResult(int result){
         case(0): {
             gameResult = "1 - 0";
             playerWhite.points++;
-            //playerWhite.playersPlayedWith.push_back(std::make_pair(playerBlack.startingPosition, 1));
             break;
         }
         case(1): {

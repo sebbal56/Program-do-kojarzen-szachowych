@@ -19,7 +19,6 @@ void RoundPanel::InitializePairingsView()
 
     sizer->Add(makePairingsButton, 0, wxALL | wxALIGN_CENTER, 10);
 
-    // Jeœli r_num == 0, dodaj dropdown wyboru koloru
     if (r_num == 0) {
         wxArrayString colorOptions;
         colorOptions.Add("Bia³y");
@@ -92,7 +91,6 @@ void RoundPanel::OnMakePairings(wxCommandEvent& event)
 
     sizer->Clear(true);
 
-    // Initialize results view
     InitializeResultsView();
 
     tournament->rounds[r_num].roundPaired = true;

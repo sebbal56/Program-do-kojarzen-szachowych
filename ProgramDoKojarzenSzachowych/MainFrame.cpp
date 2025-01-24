@@ -26,18 +26,14 @@ MainFrame::MainFrame(const wxString& title)
 
 }
 
-void MainFrame::OnRunLogic(wxCommandEvent& event) {
-    AppLogic& appLogic = AppLogic::getInstance();
-}
+
 
 void MainFrame::OnCreateTournament(wxCommandEvent& event) {
     this->DestroyChildren();
     TournamentCreator* creatorPanel = new TournamentCreator(this);
-    // Stwórz sizer i dodaj panel
     wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
     sizer->Add(creatorPanel, 1, wxEXPAND);
 
-    // Ustaw sizer dla MainFrame
     this->SetSizer(sizer);
     this->Layout();
 }
@@ -108,8 +104,7 @@ void MainFrame::OnLoadTournament(wxCommandEvent& event) {
 
 void MainFrame::OnSaveTournament(wxCommandEvent& event) {
     wxLogMessage("Wywo³ano zapis turnieju z menu.");
-    // Przeka¿ zdarzenie do aktywnego TournamentWindow
-    TournamentWindow* tournamentWindow = dynamic_cast<TournamentWindow*>(FindWindowByLabel("TournamentWindowLabel")); // U¿yj identyfikatora okna
+    TournamentWindow* tournamentWindow = dynamic_cast<TournamentWindow*>(FindWindowByLabel("TournamentWindowLabel"));
     if (tournamentWindow) {
         tournamentWindow->OnSaveTournament(event);
     }

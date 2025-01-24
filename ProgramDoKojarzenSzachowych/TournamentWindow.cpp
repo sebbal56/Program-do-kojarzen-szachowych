@@ -11,13 +11,12 @@ TournamentWindow::TournamentWindow(wxWindow* parent, Tournament* t) : wxPanel(pa
     fileMenu->Append(wxID_SAVE, "Zapisz turniej\tCtrl+S", "Zapisz dane turnieju");
     menuBar->Append(fileMenu, "Plik");
 
-    // Ustawienie menu dla okna nadrzêdnego
     wxFrame* parentFrame = dynamic_cast<wxFrame*>(GetParent());
     if (parentFrame) {
         parentFrame->SetMenuBar(menuBar);
     }
 
-    // Panel z przyciskami (po lewej stronie)
+    // Panel z przyciskami po lewej
     buttonPanel = new wxPanel(this);
     wxBoxSizer* buttonSizer = new wxBoxSizer(wxVERTICAL);
 
@@ -42,20 +41,18 @@ TournamentWindow::TournamentWindow(wxWindow* parent, Tournament* t) : wxPanel(pa
         r_num++;
     }
 
-    // Panel z treœci¹ (prawa czêœæ, która siê zmienia)
+    // Panel z z prawej
     contentPanel = new wxPanel(this);
     wxBoxSizer* contentSizer = new wxBoxSizer(wxVERTICAL);
 
-    // Tworzymy InfoPanel, który wyœwietli szczegó³y turnieju
     InfoPanel* infoPanel = new InfoPanel(contentPanel, tournament);
-    contentSizer->Add(infoPanel, 1, wxEXPAND | wxALL, 10); // Dodajemy InfoPanel do contentPanel
+    contentSizer->Add(infoPanel, 1, wxEXPAND | wxALL, 10);
 
     contentPanel->SetSizer(contentSizer);
 
-    // G³ówny sizer: podzielony na dwie kolumny
     wxBoxSizer* mainSizer = new wxBoxSizer(wxHORIZONTAL);
-    mainSizer->Add(buttonPanel, 0, wxEXPAND | wxALL, 10);  // Przyciski po lewej stronie
-    mainSizer->Add(contentPanel, 1, wxEXPAND | wxALL, 10); // Dynamiczna zawartoœæ po prawej stronie
+    mainSizer->Add(buttonPanel, 0, wxEXPAND | wxALL, 10);
+    mainSizer->Add(contentPanel, 1, wxEXPAND | wxALL, 10);
 
     this->SetSizer(mainSizer);
     this->Layout();
@@ -168,7 +165,6 @@ void TournamentWindow::RefreshRoundButtons() {
     Bind(wxEVT_BUTTON, &TournamentWindow::OnShowInfoPanel, this, mainButton->GetId());
     Bind(wxEVT_BUTTON, &TournamentWindow::OnShowResults, this, resultsButton->GetId());
 
-    // Dodajemy przyciski dla rund
     int r_num = 1;
     for (auto& round : tournament->rounds) {
         wxButton* roundButton = new wxButton(buttonPanel, wxID_ANY, "Runda " + std::to_string(r_num), wxDefaultPosition, wxSize(160, 30));
@@ -179,6 +175,6 @@ void TournamentWindow::RefreshRoundButtons() {
     }
 
     buttonPanel->SetSizer(buttonSizer);
-    buttonPanel->Layout(); // Przeliczenie uk³adu
-    Layout(); // Odœwie¿enie ca³ego okna
+    buttonPanel->Layout();
+    Layout();
 }

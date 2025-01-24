@@ -16,11 +16,6 @@ private:
     //wxButton* newPlayerButton;
     Tournament* tournament;
 
-    //void OnAddPlayer(wxCommandEvent& event);
-
-   // wxDECLARE_EVENT_TABLE();
-
-
 };
 
 #endif // RESULTS_PANEL_H

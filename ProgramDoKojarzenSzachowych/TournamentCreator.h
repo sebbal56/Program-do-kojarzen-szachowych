@@ -2,7 +2,6 @@
 #define TOURNAMENT_CREATOR_H
 
 #include <wx/wx.h>
-#include "AppLogic.h"
 #include "MainFrame.h"
 #include "TournamentWindow.h"
 #include "Tournament.h"

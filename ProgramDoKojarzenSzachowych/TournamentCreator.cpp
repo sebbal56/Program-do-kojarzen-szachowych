@@ -49,10 +49,8 @@ TournamentCreator::TournamentCreator(wxWindow* parent) : wxPanel(parent) {
 }
 
 void TournamentCreator::OnCancel(wxCommandEvent& event) {
-    // Zamykamy obecne okno kreatora turnieju
-    this->GetParent()->Show(false);  // Ukrywa kreator turnieju
+    this->GetParent()->Show(false);
 
-    // Tworzymy now¹ instancjê g³ównego okna i je pokazujemy
     MainFrame* mainFrame = new MainFrame("Program do kojarzeñ szachowych");
     mainFrame->Show(true);
 }
@@ -78,9 +76,6 @@ void TournamentCreator::OnNext(wxCommandEvent& event) {
     int tournamentMonth = static_cast<int>(month);
     int tournamentYear = static_cast<int>(year);
     wxString tournamentName = nameField->GetValue();
-    //wxString tournamentDay = dayField->GetValue();
-    //wxString tournamentMonth = monthField->GetValue();
-    //wxString tournamentYear = yearField->GetValue();
     wxString tournamentPlace = placeField->GetValue();
     wxString tournamentArbiter = arbiterField->GetValue();
     wxString tournamentAbout = aboutField->GetValue();
@@ -94,10 +89,9 @@ void TournamentCreator::OnNext(wxCommandEvent& event) {
 
     TournamentWindow* tournamentWindow = new TournamentWindow(parent, t);
 
-    // Ustawiamy sizer i uk³ad
     wxBoxSizer* sizer = dynamic_cast<wxBoxSizer*>(parent->GetSizer());
     if (sizer) {
-        sizer->Clear(true); // Usuwamy obecny panel
+        sizer->Clear(true);
         sizer->Add(tournamentWindow, 1, wxEXPAND);
         parent->Layout();
         parent->Refresh();

@@ -14,7 +14,7 @@ private:
     Tournament* tournament;
     int r_num;
     wxBoxSizer* sizer;
-    std::vector<wxChoice*> resultsChoices; // Store dropdown menus for results
+    std::vector<wxChoice*> resultsChoices;
 
     void OnSaveResults(wxCommandEvent& event);
 };

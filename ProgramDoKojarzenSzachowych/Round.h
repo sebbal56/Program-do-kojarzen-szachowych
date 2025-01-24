@@ -1,8 +1,6 @@
 #pragma once
 #include "PairOfPlayers.h"
 #include "Tournament.h"
-#include <map>
-
 
 class Round
 {

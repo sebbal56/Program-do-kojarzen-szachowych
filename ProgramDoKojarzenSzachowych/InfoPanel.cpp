@@ -1,5 +1,3 @@
-// InfoPanel.cpp
-
 #include "InfoPanel.h"
 
 InfoPanel::InfoPanel(wxWindow* parent, Tournament* tournament)

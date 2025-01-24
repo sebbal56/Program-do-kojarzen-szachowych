@@ -22,6 +22,7 @@ private:
     Tournament* tournament;
 
     wxBoxSizer* sizer;
+    wxFlexGridSizer* gridSizer;
     wxButton* makePairingsButton;
     wxButton* inputResultsButton;
     wxChoice* colorChoice;

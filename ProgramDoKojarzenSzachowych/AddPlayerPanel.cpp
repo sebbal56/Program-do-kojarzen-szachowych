@@ -52,7 +52,8 @@ AddPlayerPanel::AddPlayerPanel(wxWindow* parent, Tournament* t) : wxPanel(parent
     mainSizer->Add(mainLabel, 0, wxALIGN_CENTER | wxTOP | wxBOTTOM, 20);
 
     // Sizer z siatk¹
-    wxFlexGridSizer* gridSizer = new wxFlexGridSizer(2, 10, 10);
+    wxFlexGridSizer* gridSizer = new wxFlexGridSizer(2, 25, 25);
+    gridSizer->AddGrowableCol(1);
     gridSizer->Add(surnameLabel, 0, wxALIGN_RIGHT | wxALIGN_CENTER_VERTICAL);
     gridSizer->Add(surnameInput, 1, wxEXPAND);
     gridSizer->Add(nameLabel, 0, wxALIGN_RIGHT | wxALIGN_CENTER_VERTICAL);

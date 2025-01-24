@@ -15,9 +15,19 @@ RoundPanel::RoundPanel(wxWindow* parent, Tournament* tournament, int rNumber)
 
 void RoundPanel::InitializePairingsView()
 {
-    makePairingsButton = new wxButton(this, wxID_ANY, "Utwórz kojarzenia", wxDefaultPosition, wxDefaultSize);
+    gridSizer = new wxFlexGridSizer(1, 0, 0);
 
-    sizer->Add(makePairingsButton, 0, wxALL | wxALIGN_CENTER, 10);
+    gridSizer->AddGrowableRow(0); 
+    gridSizer->AddGrowableCol(0); 
+
+    wxBoxSizer* centerSizer = new wxBoxSizer(wxVERTICAL);
+
+    wxFont buttonFont(13, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
+    wxFont choiceFont(12, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
+
+    makePairingsButton = new wxButton(this, wxID_ANY, "Utwórz kojarzenia", wxDefaultPosition, wxDefaultSize);
+    makePairingsButton->SetFont(buttonFont);
+    centerSizer->Add(makePairingsButton, 0, wxALL | wxALIGN_CENTER, 10);
 
     if (r_num == 0) {
         wxArrayString colorOptions;
@@ -25,12 +35,16 @@ void RoundPanel::InitializePairingsView()
         colorOptions.Add("Czarny");
 
         colorChoice = new wxChoice(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, colorOptions);
+        colorChoice->SetFont(choiceFont);
         colorChoice->SetSelection(0);
 
-        sizer->Add(colorChoice, 0, wxALL | wxALIGN_CENTER, 10);
+        centerSizer->Add(colorChoice, 0, wxALL | wxALIGN_CENTER, 10);
     }
 
-    SetSizer(sizer);
+    gridSizer->Add(centerSizer, 1, wxALIGN_CENTER);
+
+    SetSizer(gridSizer);
+
     makePairingsButton->Bind(wxEVT_BUTTON, &RoundPanel::OnMakePairings, this);
 }
 
@@ -90,6 +104,7 @@ void RoundPanel::OnMakePairings(wxCommandEvent& event)
         tournament->firstColour = !tournament->firstColour;
     }
     sizer->Clear(true);
+    gridSizer->Clear(true);
 
     InitializeResultsView();
 

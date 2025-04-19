@@ -100,6 +100,37 @@ void AddPlayerPanel::OnSaveButtonClicked(wxCommandEvent& event) {
     tournament->listOfPlayers.push_back(p);
     if(tournament->tournamentStarted == false)
         tournament->sortByRating(tournament->listOfPlayers);
+
+
+
+    sqlite3* DB;
+    int exit = sqlite3_open("players.db", &DB);
+    if (exit != SQLITE_OK) {
+        wxMessageBox("Nie uda;o siê otworzyc bazy danych.", "Blad", wxOK | wxICON_ERROR);
+        return;
+    }
+
+    std::string sql = "INSERT INTO PLAYERS (SURNAME, NAME, CLUB, RATING, D, M, Y) VALUES ('" +
+        surname.ToStdString() + "', '" +
+        name.ToStdString() + "', '" +
+        club.ToStdString() + "', " +
+        std::to_string(rate) + ", " +
+        day.ToStdString() + ", " +
+        month.ToStdString() + ", " +
+        year.ToStdString() + ");";
+
+    char* errorMessage;
+    exit = sqlite3_exec(DB, sql.c_str(), nullptr, nullptr, &errorMessage);
+
+    if (exit != SQLITE_OK) {
+        wxString msg = "B³¹d przy zapisie do bazy: ";
+        msg += errorMessage;
+        wxMessageBox(msg, "B³¹d", wxOK | wxICON_ERROR);
+        sqlite3_free(errorMessage);
+    }
+
+    sqlite3_close(DB);
+
     surnameInput->Clear();
     nameInput->Clear();
     clubInput->Clear();

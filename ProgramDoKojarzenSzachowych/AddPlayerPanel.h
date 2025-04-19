@@ -3,6 +3,7 @@
 
 #include <wx/wx.h>
 #include "Tournament.h"
+#include <sqlite3.h>
 
 class AddPlayerPanel : public wxPanel {
 public:

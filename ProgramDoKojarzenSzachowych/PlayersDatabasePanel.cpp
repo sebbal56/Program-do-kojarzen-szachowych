@@ -11,9 +11,9 @@ PlayersDatabasePanel::PlayersDatabasePanel(wxWindow* parent, Tournament* t) : wx
 
     listCtrl = new wxListCtrl(this, wxID_ANY, wxDefaultPosition, wxSize(600, 400), wxLC_REPORT);
 
-    listCtrl->InsertColumn(0, "ID", wxLIST_FORMAT_LEFT, 40);
-    listCtrl->InsertColumn(1, "Nazwisko", wxLIST_FORMAT_LEFT, 120);
-    listCtrl->InsertColumn(2, "Imie", wxLIST_FORMAT_LEFT, 120);
+    listCtrl->InsertColumn(0, "ID", wxLIST_FORMAT_LEFT, 33);
+    listCtrl->InsertColumn(1, "Nazwisko", wxLIST_FORMAT_LEFT, 110);
+    listCtrl->InsertColumn(2, "Imie", wxLIST_FORMAT_LEFT, 110);
     listCtrl->InsertColumn(3, "Klub", wxLIST_FORMAT_LEFT, 120);
     listCtrl->InsertColumn(4, "rank", wxLIST_FORMAT_LEFT, 60);
     listCtrl->InsertColumn(5, "D", wxLIST_FORMAT_LEFT, 30);

@@ -3,6 +3,7 @@
 
 wxBEGIN_EVENT_TABLE(StartingListPanel, wxPanel)
     EVT_BUTTON(wxID_ANY, StartingListPanel::OnAddPlayer)
+    EVT_BUTTON(wxID_ANY, StartingListPanel::OnOpenDatabase)
 wxEND_EVENT_TABLE()
 
     StartingListPanel::StartingListPanel(wxWindow* parent, Tournament* t) : wxPanel(parent) {
@@ -33,11 +34,19 @@ wxEND_EVENT_TABLE()
         }
 
         newPlayerButton = new wxButton(this, wxID_ANY, "Dodaj nowego zawodnika", wxDefaultPosition, wxSize(160, 40));
+        openDatabaseButton = new wxButton(this, wxID_ANY, "Otworz baze zawodnikow", wxDefaultPosition, wxSize(160, 40));
+
+        newPlayerButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {OnAddPlayer(event);});
+        openDatabaseButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {OnOpenDatabase(event);});
 
         wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
         //sizer->Add(listBox, 1, wxEXPAND | wxALL, 10);
         sizer->Add(listCtrl, 1, wxEXPAND | wxALL, 10);
-        sizer->Add(newPlayerButton, 0, wxALL | wxALIGN_CENTER, 10);
+        wxBoxSizer* buttonSizer = new wxBoxSizer(wxHORIZONTAL);
+        buttonSizer->Add(newPlayerButton, 0, wxALL, 10);
+        buttonSizer->Add(openDatabaseButton, 0, wxALL, 10);
+
+        sizer->Add(buttonSizer, 0, wxALIGN_CENTER);
 
         SetSizer(sizer);
     }
@@ -49,6 +58,18 @@ void StartingListPanel::OnAddPlayer(wxCommandEvent& event) {
         AddPlayerPanel* addPlayerPanel = new AddPlayerPanel(parent, tournament);
         wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
         sizer->Add(addPlayerPanel, 1, wxEXPAND);
+        parent->SetSizer(sizer);
+        parent->Layout();
+    }
+}
+
+void StartingListPanel::OnOpenDatabase(wxCommandEvent& event) {
+    wxWindow* parent = GetParent();
+    if (parent) {
+        this->Hide();
+        PlayersDatabasePanel* playersDatabasePanel = new PlayersDatabasePanel(parent, tournament);
+        wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
+        sizer->Add(playersDatabasePanel, 1, wxEXPAND);
         parent->SetSizer(sizer);
         parent->Layout();
     }

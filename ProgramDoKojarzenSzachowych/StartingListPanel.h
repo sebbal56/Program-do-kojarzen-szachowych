@@ -4,6 +4,7 @@
 #include <wx/wx.h>
 #include "Tournament.h"
 #include "AddPlayerPanel.h"
+#include "PlayersDatabasePanel.h"
 #include <wx/listctrl.h>
 
 class StartingListPanel : public wxPanel {
@@ -13,9 +14,11 @@ public:
 private:
     wxListCtrl* listCtrl;
     wxButton* newPlayerButton;
+    wxButton* openDatabaseButton;
     Tournament* tournament;
 
     void OnAddPlayer(wxCommandEvent& event);
+    void OnOpenDatabase(wxCommandEvent& event);
 
     wxDECLARE_EVENT_TABLE();
 

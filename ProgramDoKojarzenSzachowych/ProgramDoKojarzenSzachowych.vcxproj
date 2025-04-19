@@ -142,6 +142,7 @@
     <ClCompile Include="ResultsPanel.cpp" />
     <ClCompile Include="Round.cpp" />
     <ClCompile Include="RoundPanel.cpp" />
+    <ClCompile Include="sqlite3.c" />
     <ClCompile Include="StartingListPanel.cpp" />
     <ClCompile Include="Tournament.cpp" />
     <ClCompile Include="TournamentCreator.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="ResultsPanel.h" />
     <ClInclude Include="Round.h" />
     <ClInclude Include="RoundPanel.h" />
+    <ClInclude Include="sqlite3.h" />
     <ClInclude Include="StartingListPanel.h" />
     <ClInclude Include="Tournament.h" />
     <ClInclude Include="TournamentCreator.h" />

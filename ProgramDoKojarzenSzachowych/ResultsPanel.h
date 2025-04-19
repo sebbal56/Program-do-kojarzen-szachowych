@@ -2,9 +2,10 @@
 #define RESULTS_PANEL_H
 
 #include <wx/wx.h>
-#include <wx/listbox.h>
+//#include <wx/listbox.h>
 #include "Tournament.h"
 #include "AddPlayerPanel.h"
+#include <wx/listctrl.h>
 
 class ResultsPanel : public wxPanel {
 public:
@@ -12,7 +13,8 @@ public:
 
 private:
 
-    wxListBox* listBox;
+   // wxListBox* listBox;
+    wxListCtrl* listCtrl;
     Tournament* tournament;
 
 };

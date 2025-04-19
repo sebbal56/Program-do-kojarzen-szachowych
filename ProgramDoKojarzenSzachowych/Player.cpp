@@ -71,6 +71,20 @@ std::string Player::getName() const
 	return name;
 }
 
+std::string Player::getClub() const {
+	return club;
+}
+
+Date Player::getBDay() const
+{
+	return Date();
+}
+
+int Player::getYear()
+{
+	return dateOfBirth.getYear();
+}
+
 const std::string Player::playerInfo(){
 	std::ostringstream stream;
 	const int posWidth = 5;         // Szerokoœæ dla numeru startowego

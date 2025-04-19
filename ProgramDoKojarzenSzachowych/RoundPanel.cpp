@@ -55,6 +55,11 @@ void RoundPanel::InitializeResultsView()
     wxFont font(wxFontInfo(8).Family(wxFONTFAMILY_TELETYPE)); // Rozmiar 8, czcionka monospaced
     pairingsListBox->SetFont(font);
 
+    std::ostringstream stream;
+    stream << std::setw(36) << std::left << "Biale" << std::setw(9) << std::left << "Wynik" << std::setw(32) << std::right << "Czarne";
+
+    pairingsListBox->Append(stream.str());
+
     if (tournament->rounds[r_num].roundEnded) {
         for (auto& pair : tournament->rounds[r_num].pairings) {
             pairingsListBox->Append(pair.displayResult());

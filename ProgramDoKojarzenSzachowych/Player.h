@@ -19,6 +19,9 @@ public:
 	int getRating() const;
 	std::string getSurname() const;
 	std::string getName() const;
+	std::string getClub() const;
+	Date getBDay() const;
+	int getYear();
 	const std::string playerInfo();
 	std::string playerToFile();
 	std::string playerToPairings();

@@ -6,6 +6,7 @@
 #include "AddPlayerPanel.h"
 #include <wx/listctrl.h>
 #include <sqlite3.h>
+#include "EditPlayerDialog.h"
 
 class PlayersDatabasePanel : public wxPanel {
 public:
@@ -30,6 +31,7 @@ private:
 
     void OnSearch(wxCommandEvent& event);
     void searchBySurname(const std::string& prefix);
+    void OnEdit(wxCommandEvent& event);
     wxDECLARE_EVENT_TABLE();
 
 

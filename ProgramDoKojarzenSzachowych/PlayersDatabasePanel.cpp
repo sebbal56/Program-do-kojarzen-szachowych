@@ -9,6 +9,7 @@ EVT_BUTTON(1005, PlayersDatabasePanel::OnSortById)
 EVT_BUTTON(1006, PlayersDatabasePanel::OnSortBySurname)
 EVT_BUTTON(1007, PlayersDatabasePanel::OnSortByRating)
 EVT_BUTTON(1008, PlayersDatabasePanel::OnSearch)
+EVT_BUTTON(1009, PlayersDatabasePanel::OnEdit)
 wxEND_EVENT_TABLE()
 
 PlayersDatabasePanel::PlayersDatabasePanel(wxWindow* parent, Tournament* t) : wxPanel(parent) {
@@ -32,6 +33,7 @@ PlayersDatabasePanel::PlayersDatabasePanel(wxWindow* parent, Tournament* t) : wx
 
     wxButton* addToTournamentButton = new wxButton(this, 1003, "Dodaj do turnieju", wxDefaultPosition, wxSize(150, 35));
     wxButton* deleteFromDatabaseButton = new wxButton(this, 1004, "Usun z bazy danych", wxDefaultPosition, wxSize(150, 35));
+    wxButton* editPlayerButton = new wxButton(this, 1009, "Edytuj dane zawodnika", wxDefaultPosition, wxSize(150, 35));
 
 
     wxBoxSizer* sizer = new wxBoxSizer(wxVERTICAL);
@@ -59,7 +61,8 @@ PlayersDatabasePanel::PlayersDatabasePanel(wxWindow* parent, Tournament* t) : wx
     wxBoxSizer* ButtonsSizer = new wxBoxSizer(wxHORIZONTAL);
     ButtonsSizer->AddStretchSpacer(1);
     ButtonsSizer->Add(addToTournamentButton, 0, wxRIGHT, 10);
-    ButtonsSizer->Add(deleteFromDatabaseButton, 0);
+    ButtonsSizer->Add(deleteFromDatabaseButton, 0, wxRIGHT, 10);
+    ButtonsSizer->Add(editPlayerButton, 0);
     ButtonsSizer->AddStretchSpacer(1);
     sizer->Add(ButtonsSizer, 0, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 10);
 
@@ -260,4 +263,22 @@ void PlayersDatabasePanel::searchBySurname(const std::string& prefix) {
     }
 
     sqlite3_close(DB);
+}
+
+void PlayersDatabasePanel::OnEdit(wxCommandEvent& event) {
+    if (selectedIndex == -1) {
+        wxMessageBox("Nie zaznaczono zawodnika.", "B³¹d", wxICON_WARNING);
+        return;
+    }
+
+    long id;
+    if (!listCtrl->GetItemText(selectedIndex, 0).ToLong(&id)) {
+        wxMessageBox("Nieprawid³owe ID.", "B³¹d", wxICON_ERROR);
+        return;
+    }
+
+    EditPlayerDialog dlg(this, id);
+    if (dlg.ShowModal() == wxID_OK) {
+        refreshList("PLAYER_ID ASC");
+    }
 }

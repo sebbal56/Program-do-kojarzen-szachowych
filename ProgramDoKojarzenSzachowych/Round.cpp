@@ -121,6 +121,8 @@ void Round::furtherRoundPairings(std::vector<Player> listOfPlayers, bool colour)
 		Match* bestMatch = nullptr;
 		int minScoreDifference = INT_MAX;
 		for (auto&& m : matches) {
+			if (m.a->startingPosition <= 0 || m.b->startingPosition <= 0) 
+				continue;
 			if(used[m.a->startingPosition - 1] || used[m.b->startingPosition - 1])
 				continue;
 			if (m.a == targetPlayer || m.b == targetPlayer) {
@@ -130,6 +132,16 @@ void Round::furtherRoundPairings(std::vector<Player> listOfPlayers, bool colour)
 					bestMatch = &m;
 				}
 			}
+		}
+		if (bestMatch == nullptr) {
+			for (int i = 0; i < listOfPlayers.size(); i++) {
+				if (!used[i]) {
+					pairings.push_back(PairOfPlayers(listOfPlayers[i]));
+					used[i] = true;
+					break;
+				}
+			}
+			continue;
 		}
 		pairings.push_back(PairOfPlayers(*bestMatch->a, *bestMatch->b));
 		for (int i = 0; i < listOfPlayers.size(); i++) {

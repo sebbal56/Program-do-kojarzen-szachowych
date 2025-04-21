@@ -189,7 +189,7 @@ void Player::sortByStarting(std::vector<Player>& startingList)
 void Player::setBuch(std::vector<Player>  listOfPlayers){
 	buch = 0;
 	for (auto& game : playersPlayedWith) {
-		if (game.second == 1) {
+		if (game.first >= 0 && game.second == 1) {
 			buch += listOfPlayers[game.first-1].points;
 		}
 	}
